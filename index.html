@@ -13,25 +13,35 @@
       <h2 id="headerText">Choose Your Game!</h2>
     </header>
     <main>
-      <section>
-        <p>doodle</p>
-        <h3></h3>
-        <p></p>
+      <section id="alien-player">
+        <p>👽</p>
+        <h3>Alien</h3>
+        <p>Wins:</p>
       </section> class="left-side">
 
       <section class="play-view">
-        <section class="game-choice">
-          <div class="classic">
+        <section class="game-choice-cards">
+          <div class="classic-card">
+            <h4 class="game-type">classic</h4>
+            <p>rock > scissors</p>
+            <p>paper > rock</p>
+            <p>scissors > paper</p>
           </div>
-          <div class="difficult">
+          <div class="difficult-card">
+            <h4 class="game-type">difficult</h4>
+            <p>rock > scissors & alien</p>
+            <p>scissors > paper & blob</p>
+            <p>paper > rock & alien</p>
+            <p>alien > scissors & paper</p>
+            <p>blob > rock & alien</p>
           </div>
         </section>
-        <section class="classic-fighters hidden">
+        <section class="classic-fighters-card hidden">
           <img>
           <img>
           <img>
         </section>
-        <section class="difficult-fighters hidden">
+        <section class="difficult-fighters-card hidden">
           <div>
             <img>
             <img>
@@ -45,10 +55,10 @@
         </section>
       </section>
 
-      <section>
-        <p>flower</p>
-        <h3></h3>
-        <p></p>
+      <section id="computer-player">
+        <p>🖥</p>
+        <h3>Computer</h3>
+        <p>Wins: 0</p>
       </section> class="right-side">
     </main>
   </body>
