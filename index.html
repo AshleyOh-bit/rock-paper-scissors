@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Rock, Paper, Scissors</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="./styles.css">
+    <meta content="text/html;charset=utf-8" http-equiv="Content-Type">
+    <meta content="utf-8" http-equiv="encoding">
+  </head>
+  <body>
+    <header>
+      <h1>Rock, Paper, Scissors</h1>
+      <h2 id="headerText">Choose Your Game!</h2>
+    </header>
+    <main>
+      <section id="alien-player">
+        <p>👽</p>
+        <h3>Alien</h3>
+        <p>Wins:</p>
+      </section>
+
+      <section class="play-view">
+        <section class="game-choice-cards">
+          <div class="classic-card">
+            <h4 class="game-type">classic</h4>
+            <p>rock > scissors</p>
+            <p>paper > rock</p>
+            <p>scissors > paper</p>
+          </div>
+          <div class="difficult-card">
+            <h4 class="game-type">difficult</h4>
+            <p>rock > scissors & alien</p>
+            <p>scissors > paper & blob</p>
+            <p>paper > rock & alien</p>
+            <p>alien > scissors & paper</p>
+            <p>blob > rock & alien</p>
+          </div>
+        </section>
+        <section class="classic-fighters-card hidden">
+          <img>
+          <img>
+          <img>
+        </section>
+        <section class="difficult-fighters-card hidden">
+          <div>
+            <img>
+            <img>
+            <img>
+          </div>
+          <div>
+            <img>
+            <img>
+            <img>
+          </div>
+        </section>
+      </section>
+
+      <section id="computer-player">
+        <p>🖥</p>
+        <h3>Computer</h3>
+        <p>Wins: 0</p>
+      </section> class="right-side">
+    </main>
+  </body>
+  <script type="text/javascript" src="game.js"></script>
+  <script type="text/javascript" src="player.js"></script>
+  <script type="text/javascript" src="main.js"></script>
+</html>
