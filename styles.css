@@ -1,0 +1,13 @@
+*{
+  border: blue solid 1px;
+}
+
+html {
+/*   border: red; */
+  background-image: url(https://fsa.zobj.net/crop.php?r=iJ00lmIuvw1l2Fl87KLiXZdUf0KnpNtBtshpE7YdVy58b_zvwDr1exAh0bqvpjpxslCrtktNVcAQLPG4gIE2mrzqo8OcVCx_cbOyVeZyXpUn1AG8_lkDDVjljkaFcR7dxgm3q5A9wWZNklhb);
+}
+
+body {
+  border-radius: 10px;
+  height: 100%;
+}
