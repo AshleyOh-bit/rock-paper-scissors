@@ -4,4 +4,9 @@ class Player {
     this.token = token || false;
     this.wins = wins || 0;
   }
+
+  saveWinsToStorage() {
+    var strWins = JSON.stringify(this.wins);
+    localStorage.setItems(this.name, strWins);
+  }
 }
