@@ -46,4 +46,8 @@ class Game {
           return this.winner = this.compPlayer.name;
         }
       }
+
+      resetGame() {
+      // localStorage.clear();
+    }
 }
