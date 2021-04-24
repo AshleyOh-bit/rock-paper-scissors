@@ -97,9 +97,9 @@ section.egg {
 
 .game-board {
   display: flex;
-  justify-content: center;
+  justify-content: baseline;
   align-items: center;
-  width: 30%;
+  width: 40%;
   /* height: 100px; */
 }
 
@@ -109,7 +109,8 @@ section.egg {
   justify-content: space-around;
   align-items: center;
   width: 70%;
-  height: 70%
+  height: 70%;
+  flex-wrap: wrap;
 }
 
 .card {
