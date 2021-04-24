@@ -13,4 +13,8 @@ class Player {
   retrieveWinsFromStorage() {
    return localStorage.getItem(JSON.parse(this.name))
  }
+
+ getRandomIndex(num){
+   return (Math.floor(Math.random() * num))
+ }
 }
