@@ -76,7 +76,13 @@ li {
 }
 
 img {
-  height: 20%;
+  margin: 0%;
+  border: white solid 2px;
+  border-radius: 3%;
+  background-color: rgba(255, 255, 255, .80);
+  /* width: 100%; */
+  height: 30%;
+  flex-shrink: 1;
 }
 /*
 section.egg {
@@ -100,13 +106,13 @@ section.egg {
 .view {
   display: flex;
   flex-direction: column;
-  justify-content: space-evenly;
+  justify-content: space-around;
   align-items: center;
   width: 70%;
-  /* height: 70% */
+  height: 70%
 }
 
-.icon {
+.card {
   margin: 4%;
   border: white solid 2px;
   border-radius: 3%;
@@ -116,7 +122,10 @@ section.egg {
   flex-shrink: 1;
 }
 
-.icon:hover {
+/* .icon {
+} */
+
+.card, img:hover {
   background-color: rgb(144, 250, 194);
 }
 
