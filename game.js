@@ -10,4 +10,15 @@ class Game {
      difficult: ["rock", "paper", "scissors", "alien", "computer"]
    }
  }
+
+ determineCompChoice() {
+     var compNum;
+     if (this.gameType === "classic") {
+       compNum = compPlayer.takeTurn(this.gameType);
+       return this.compPlayer.token = this.gameData.classic[compNum];
+     } else {
+       compuNum = compPlayer.takeTurn(this.gameType);
+       return this.compPlayer.token = this.gameData.difficult[compNum];
+     }
+   }
 }
