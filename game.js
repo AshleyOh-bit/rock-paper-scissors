@@ -21,4 +21,29 @@ class Game {
        return this.compPlayer.token = this.gameData.difficult[compNum];
      }
    }
+
+   checkForWinner() {
+      if (this.gameType === "classic") {
+        if (this.humanPlayer.token === this.compPlayer.token) {
+          return this.winner = false;
+        } else if (this.humanPlayer.token === "rock" && this.compPlayer.token === "scissors") {
+          this.humanPlayer.wins++;
+          return this.winner = this.humanPlayer.name;
+        } else if (this.humanPlayer.token === "rock" && this.compPlayer.token === "paper") {
+          this.compPlayer.wins++;
+          return this.winner = this.humanPlayer.name;
+        } else if (this.humanPlayer.token === "paper" && this.compPlayer.token === "rock") {
+          this.humanPlayer.wins++;
+          return this.winner = this.humanPlayer.name;
+        } else if (this.humanPlayer.token === "paper" && this.compPlayer.token === "scissors") {
+          this.compPlayer.wins++;
+          return this.winner = this.compPlayer.name;
+        } else if (this.humanPlayer.token === "scissors" && this.compPlayer.token === "paper") {
+          this.humanPlayer.wins++;
+          return this.winner = this.compPlayer.name;
+        } else if (this.humanPlayer.token === "scissors" && this.compPlayer.token === "rock") {
+          this.compPlayer.wins++;
+          return this.winner = this.compPlayer.name;
+        }
+      }
 }
