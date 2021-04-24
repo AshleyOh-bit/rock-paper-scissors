@@ -14,11 +14,11 @@ class Player {
    return localStorage.getItem(JSON.parse(this.name))
  }
 
- getRandomIndex(num){
+  getRandomIndex(num){
    return (Math.floor(Math.random() * num))
  }
 
- takeTurn(gameChoice) {
+  takeTurn(gameChoice) {
     if (!this.token && gameChoice === "classic") {
       return this.getRandomIndex(3)
     } else if (!this.token && gameChoice === "difficult") {
