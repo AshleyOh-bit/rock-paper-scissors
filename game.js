@@ -26,30 +26,31 @@ class Game {
      }
    }
 
-   checkForWinner() {
-      if (this.gameType === "classic") {
-        if (this.humanPlayer.token === this.compPlayer.token) {
-          return this.winner = false;
-        } else if (this.humanPlayer.token === "rock" && this.compPlayer.token === "scissors") {
-          this.humanPlayer.wins++;
-          return this.winner = this.humanPlayer.name;
-        } else if (this.humanPlayer.token === "rock" && this.compPlayer.token === "paper") {
-          this.compPlayer.wins++;
-          return this.winner = this.humanPlayer.name;
-        } else if (this.humanPlayer.token === "paper" && this.compPlayer.token === "rock") {
-          this.humanPlayer.wins++;
-          return this.winner = this.humanPlayer.name;
-        } else if (this.humanPlayer.token === "paper" && this.compPlayer.token === "scissors") {
-          this.compPlayer.wins++;
-          return this.winner = this.compPlayer.name;
-        } else if (this.humanPlayer.token === "scissors" && this.compPlayer.token === "paper") {
-          this.humanPlayer.wins++;
-          return this.winner = this.compPlayer.name;
-        } else if (this.humanPlayer.token === "scissors" && this.compPlayer.token === "rock") {
-          this.compPlayer.wins++;
-          return this.winner = this.compPlayer.name;
-        }
+   // checkForWinner() {
+   //    if (this.gameType === "classic") {
+    classicGameCheck() {
+      if (this.humanPlayer.token === this.compPlayer.token) {
+        return this.winner = false;
+      } else if (this.humanPlayer.token === "rock" && this.compPlayer.token === "scissors") {
+        this.humanPlayer.wins++;
+        return this.winner = this.humanPlayer.name;
+      } else if (this.humanPlayer.token === "rock" && this.compPlayer.token === "paper") {
+        this.compPlayer.wins++;
+        return this.winner = this.humanPlayer.name;
+      } else if (this.humanPlayer.token === "paper" && this.compPlayer.token === "rock") {
+        this.humanPlayer.wins++;
+        return this.winner = this.humanPlayer.name;
+      } else if (this.humanPlayer.token === "paper" && this.compPlayer.token === "scissors") {
+        this.compPlayer.wins++;
+        return this.winner = this.compPlayer.name;
+      } else if (this.humanPlayer.token === "scissors" && this.compPlayer.token === "paper") {
+        this.humanPlayer.wins++;
+        return this.winner = this.compPlayer.name;
+      } else if (this.humanPlayer.token === "scissors" && this.compPlayer.token === "rock") {
+        this.compPlayer.wins++;
+        return this.winner = this.compPlayer.name;
       }
+    }
 
 
     //rock beats scissors and computer
@@ -100,6 +101,14 @@ class Game {
             console.log("something went wrong");
           }
         }
+
+      checkForWinner() {
+         if (this.gameType === "classic") {
+           classicGameCheck();
+          } else {
+           difficultGameCheck();
+          }
+      }
   }
 
 //REMOVE THESE CONSOLE LOGS BEFORE DEPLOYMENT:
