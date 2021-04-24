@@ -9,4 +9,8 @@ class Player {
     var strWins = JSON.stringify(this.wins);
     localStorage.setItems(this.name, strWins);
   }
+
+  retrieveWinsFromStorage() {
+   return localStorage.getItem(JSON.parse(this.name))
+ }
 }
