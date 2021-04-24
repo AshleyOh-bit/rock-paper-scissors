@@ -52,10 +52,10 @@ class Game {
     }
 
     //rock beats scissors and computer
-//paper beats rock and computer
-//scissors beats paper and alien
-//alien beats rock and paper
-//computer beats alien and scissors
+    //paper beats rock and computer
+    //scissors beats paper and alien
+    //alien beats rock and paper
+    //computer beats alien and scissors
 
 
   difficultGameCheck() {
