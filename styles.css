@@ -82,17 +82,9 @@ section.egg {
   /* height: 100px; */
 }
 
-/* .game-choice {
-  width: 30%;
-  height: 60%;
-} */
-
-/* .card {
-  width: 60%;
-  border-radius: 0;
-   width: 55%;
-  height: 25%;
-} */
+.wins-display {
+  font-size: 20px;
+}
 
 .icon {
   margin: 2%;
