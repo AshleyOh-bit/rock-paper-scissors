@@ -28,15 +28,19 @@ header {
   margin-bottom: 2%; */
 }
 
-h1 {
+h1, h2, h4 {
   margin: 1%;
   padding: 0%;
 }
 
-h2 {
+/* h2 {
   margin: 0%;
   padding: 0%;
-}
+} */
+
+/* h4 {
+  padding: 1%;
+} */
 
 main {
   display: flex;
@@ -63,6 +67,8 @@ ul {
   list-style: disc;
   padding-left: 10%;
   text-align: left;
+  /* padding-top: 2%;
+  padding-bottom: 2%; */
 }
 
 li {
@@ -79,7 +85,11 @@ section.egg {
   justify-content: center;
 } */
 
-.play-view {
+.wins-display {
+  font-size: 20px;
+}
+
+.game-board {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -87,17 +97,23 @@ section.egg {
   /* height: 100px; */
 }
 
-.wins-display {
-  font-size: 20px;
+.view {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  align-items: center;
+  width: 70%;
+  /* height: 70% */
 }
 
 .icon {
-  margin: 2%;
+  margin: 4%;
   border: white solid 2px;
   border-radius: 3%;
   background-color: rgba(255, 255, 255, .80);
-  width: 50%;
-  /* height: 30%; */
+  width: 100%;
+  height: 50%;
+  flex-shrink: 1;
 }
 
 .icon:hover {
