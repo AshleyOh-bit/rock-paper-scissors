@@ -19,7 +19,6 @@ class Player {
  }
 
  takeTurn(gameChoice) {
-    // var compIndex
     if (!this.token && gameChoice === "classic") {
       return this.getRandomIndex(3)
     } else if (!this.token && gameChoice === "difficult") {
