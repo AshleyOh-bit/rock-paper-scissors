@@ -15,9 +15,7 @@ class Player {
    }
 
    takeTurn(tokenChoice) {
-     if (!this.token) {
        this.token = tokenChoice;
-     }
    }
 
  //original functionality below

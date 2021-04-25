@@ -97,13 +97,17 @@ function renderGamePlay(game, view) {
 
 function renderPlayerData() {
     currentGame.checkForWinner();
-    // alienData.innerText = "";
-    // computerData.innerText= "";
+    // alienData.innerText = `Wins: 0`;
+    // computerData.innerText = `Wins: 0`
     if (currentGame.winner === "human") {
       alienData.innerText =`Wins: ${currentGame.humanPlayer.wins}`
     } else if (currentGame.winner === "computer") {
       computerData.innerText = `Wins: ${currentGame.compPlayer.wins}`
     }
+    // else {
+    //   alienData.innerText =`Wins: 0`
+    //   computerData.innerText = `Wins: 0`
+    // }
 }
 
 function renderHeaderText() {
@@ -141,7 +145,9 @@ function reserveFighterChoice() {
   //console.log(computer.token)
   if (event.target.closest("#rockIconClassic")) {
     //call takeTurn?
-    currentGame.humanPlayer.token = currentGame.gameData[0];
+    //currentGame.humanPlayer.token = currentGame.gameData[0];
+    currentGame.humanPlayer.takeTurn(currentGame.gameData[0]);
+    //console.log(currentGame.humanPlayer)
     //computer.token = game.compPlayer.token;
     //console.log(computer.token)
     //game.determineCompChoice();
@@ -149,14 +155,16 @@ function reserveFighterChoice() {
     // display(gamePlayView);
     renderGamePlay(currentGame, classicFighters);
   } else if (event.target.closest("#paperIconClassic")) {
-    currentGame.humanPlayer.token = currentGame.gameData[1];
+    //currentGame.humanPlayer.token = currentGame.gameData[1];
+    currentGame.humanPlayer.takeTurn(currentGame.gameData[1]);
     //computer.token = game.compPlayer.token;
     //game.determineCompChoice();
     //hide(classicFighters);
     //display(gamePlayView);
     renderGamePlay(currentGame, classicFighters);
   } else if (event.target.closest("#scissorsIconClassic")) {
-    currentGame.humanPlayer.token = currentGame.gameData[2];
+    //currentGame.humanPlayer.token = currentGame.gameData[2];
+    currentGame.humanPlayer.takeTurn(currentGame.gameData[2]);
     //computer.token = game.compPlayer.token;
     //game.determineCompChoice();
     //hide(classicFighters);
@@ -165,7 +173,8 @@ function reserveFighterChoice() {
   }
   //difficult fighter logic
     else if (event.target.closest("#rockIconDiff")) {
-    currentGame.humanPlayer.token = currentGame.gameData[0];
+    // currentGame.humanPlayer.token = currentGame.gameData[0];
+    currentGame.humanPlayer.takeTurn(currentGame.gameData[0]);
     //computer.token = game.compPlayer.token;
     //console.log(computer.token)
     //game.determineCompChoice();
@@ -173,7 +182,8 @@ function reserveFighterChoice() {
     // display(gamePlayView);
     renderGamePlay(currentGame, difficultFighters);
   } else if (event.target.closest("#paperIconDiff")) {
-    currentGame.humanPlayer.token = currentGame.gameData[1];
+    // currentGame.humanPlayer.token = currentGame.gameData[1];
+    currentGame.humanPlayer.takeTurn(currentGame.gameData[1]);
     //computer.token = game.compPlayer.token;
     //console.log(computer.token)
     //game.determineCompChoice();
@@ -181,7 +191,8 @@ function reserveFighterChoice() {
     // display(gamePlayView);
     renderGamePlay(currentGame, difficultFighters);
   } else if (event.target.closest("#scissorsIconDiff")) {
-    currentGame.humanPlayer.token = currentGame.gameData[2];
+    // currentGame.humanPlayer.token = currentGame.gameData[2];
+    currentGame.humanPlayer.takeTurn(currentGame.gameData[2]);
     //computer.token = game.compPlayer.token;
     //console.log(computer.token)
     //game.determineCompChoice();
@@ -189,7 +200,8 @@ function reserveFighterChoice() {
     // display(gamePlayView);
     renderGamePlay(currentGame, difficultFighters);
   } else if (event.target.closest("#alienIconDiff")) {
-    currentGame.humanPlayer.token = currentGame.gameData[3];
+    // currentGame.humanPlayer.token = currentGame.gameData[3];
+    currentGame.humanPlayer.takeTurn(currentGame.gameData[3]);
     //computer.token = game.compPlayer.token;
     //console.log(computer.token)
     //game.determineCompChoice();
@@ -197,7 +209,8 @@ function reserveFighterChoice() {
     // display(gamePlayView);
     renderGamePlay(currentGame, difficultFighters);
   } else if (event.target.closest("#computerIconDiff")) {
-    currentGame.humanPlayer.token = currentGame.gameData[4];
+    //currentGame.humanPlayer.token = currentGame.gameData[4];
+    currentGame.humanPlayer.takeTurn(currentGame.gameData[4]);
     //computer.token = game.compPlayer.token;
     //console.log(computer.token)
     //game.determineCompChoice();
@@ -212,4 +225,6 @@ function returnHome() {
   hide(difficultFighters);
   display(gameChoice);
   hide(changeGameButton);
+  currentGame.resetGame();
+  renderPlayerData();
 }

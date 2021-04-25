@@ -19,7 +19,10 @@ class Game {
   }
 
   resetGame() {
- // localStorage.clear();
+    this.winner = "";
+    this.humanPlayer.wins = 0;
+    this.compPlayer.wins = 0;
+     //localStorage.clear();
     }
 
 //you may be able to refactor this out by assigning a conditional regarding gameType
