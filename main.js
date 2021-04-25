@@ -1,6 +1,4 @@
 //Global Variables
-//original global variables
-//var human, computer, game;
 
 var currentGame = {};
 
@@ -53,12 +51,6 @@ function display(element) {
   element.classList.remove("invisible");
 }
 
-
-
-// function reveal(element) {
-//   element.classList.remove("invisible");
-// }
-
 function renderGamePlay(game, view) {
   hide(view);
   hide(changeGameButton);
@@ -76,25 +68,7 @@ function renderGamePlay(game, view) {
   }, 2000);
 }
 
-// function renderPlayerData() {
-//     currentGame.checkForWinner();
-//     if (currentGame.winner === "human") {
-//       alienData.innerHTML =
-//       `
-//       <p>👽</p>
-//       <h3>Alien</h3>
-//       <p>Wins: ${currentGame.humanPlayer.wins}</p>
-//       `
-//     } else if (currentGame.winner === "computer") {
-//       computerData.innerHTML =
-//       `
-//       <p> 🖥 </p>
-//       <h3>Computer</h3>
-//       <p>Wins: ${currentGame.compPlayer.wins}</p>
-//       `
-//     }
-// }
-
+//Refactor these two functions into one
 function renderPlayerData() {
   alienData.innerText =`Wins: ${currentGame.humanPlayer.wins}`
   computerData.innerText = `Wins: ${currentGame.compPlayer.wins}`
@@ -109,11 +83,6 @@ function renderPlayerData() {
 function renderHeaderText() {
   return headerText.innerText = `Choose Your Fighter!`
 }
-// 
-// function resetGameBoard() {
-//   alienData.innerText =`Wins: ${currentGame.humanPlayer.wins}`
-//   computerData.innerText = `Wins: ${currentGame.compPlayer.wins}`
-// }
 
 function setGameType() {
   human = new Player("human", "", 0);
@@ -124,99 +93,40 @@ function setGameType() {
   if (event.target.closest("#classicCard")) {
     display(classicFighters);
     currentGame.gameType = "classic";
-    //console.log(currentGame)
-    // console.log(game)
-    //try to figure out how to use this return value instead of global variables
     return
   } else {
     display(difficultFighters);
     currentGame.gameType = "difficult";
-    //console.log(currentGame)
-    //try to figure out how to use this return value instead of global variables
     return
   }
 }
 
 function reserveFighterChoice() {
-  //updates the humanPlayer class + game class gametype
   currentGame.determineCompChoice();
-  //console.log(currentGame.compPlayer)
-  //computer.token = game.compPlayer.token;
-  //console.log(game.compPlayer.token)
-  //console.log(computer.token)
   if (event.target.closest("#rockIconClassic")) {
-    //call takeTurn?
-    //currentGame.humanPlayer.token = currentGame.gameData[0];
     currentGame.humanPlayer.takeTurn(currentGame.gameData[0]);
-    //console.log(currentGame.humanPlayer)
-    //computer.token = game.compPlayer.token;
-    //console.log(computer.token)
-    //game.determineCompChoice();
-    // hide(classicFighters);
-    // display(gamePlayView);
     renderGamePlay(currentGame, classicFighters);
   } else if (event.target.closest("#paperIconClassic")) {
-    //currentGame.humanPlayer.token = currentGame.gameData[1];
     currentGame.humanPlayer.takeTurn(currentGame.gameData[1]);
-    //computer.token = game.compPlayer.token;
-    //game.determineCompChoice();
-    //hide(classicFighters);
-    //display(gamePlayView);
     renderGamePlay(currentGame, classicFighters);
   } else if (event.target.closest("#scissorsIconClassic")) {
-    //currentGame.humanPlayer.token = currentGame.gameData[2];
     currentGame.humanPlayer.takeTurn(currentGame.gameData[2]);
-    //computer.token = game.compPlayer.token;
-    //game.determineCompChoice();
-    //hide(classicFighters);
-    //display(gamePlayView);
     renderGamePlay(currentGame, classicFighters);
   }
-  //difficult fighter logic
     else if (event.target.closest("#rockIconDiff")) {
-    // currentGame.humanPlayer.token = currentGame.gameData[0];
     currentGame.humanPlayer.takeTurn(currentGame.gameData[0]);
-    //computer.token = game.compPlayer.token;
-    //console.log(computer.token)
-    //game.determineCompChoice();
-    // hide(classicFighters);
-    // display(gamePlayView);
     renderGamePlay(currentGame, difficultFighters);
   } else if (event.target.closest("#paperIconDiff")) {
-    // currentGame.humanPlayer.token = currentGame.gameData[1];
     currentGame.humanPlayer.takeTurn(currentGame.gameData[1]);
-    //computer.token = game.compPlayer.token;
-    //console.log(computer.token)
-    //game.determineCompChoice();
-    // hide(classicFighters);
-    // display(gamePlayView);
     renderGamePlay(currentGame, difficultFighters);
   } else if (event.target.closest("#scissorsIconDiff")) {
-    // currentGame.humanPlayer.token = currentGame.gameData[2];
     currentGame.humanPlayer.takeTurn(currentGame.gameData[2]);
-    //computer.token = game.compPlayer.token;
-    //console.log(computer.token)
-    //game.determineCompChoice();
-    // hide(classicFighters);
-    // display(gamePlayView);
     renderGamePlay(currentGame, difficultFighters);
   } else if (event.target.closest("#alienIconDiff")) {
-    // currentGame.humanPlayer.token = currentGame.gameData[3];
     currentGame.humanPlayer.takeTurn(currentGame.gameData[3]);
-    //computer.token = game.compPlayer.token;
-    //console.log(computer.token)
-    //game.determineCompChoice();
-    // hide(classicFighters);
-    // display(gamePlayView);
     renderGamePlay(currentGame, difficultFighters);
   } else if (event.target.closest("#computerIconDiff")) {
-    //currentGame.humanPlayer.token = currentGame.gameData[4];
     currentGame.humanPlayer.takeTurn(currentGame.gameData[4]);
-    //computer.token = game.compPlayer.token;
-    //console.log(computer.token)
-    //game.determineCompChoice();
-    // hide(classicFighters);
-    // display(gamePlayView);
     renderGamePlay(currentGame, difficultFighters);
   }
 }
