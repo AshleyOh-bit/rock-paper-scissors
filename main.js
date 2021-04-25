@@ -22,12 +22,14 @@ var computerIconDiff = document.querySelector("#computerIconDiff");
 // Button
 var changeGameButton = document.querySelector("#changeGame");
 
-
+// On page player data
+// var alienData = document.querySelector("#alienPlayer");
 
 
 // Event listeners
 gameChoice.addEventListener("click", setGameType);
 classicFighters.addEventListener("click", reserveFighterChoice);
+difficultFighters.addEventListener("click", reserveFighterChoice);
 changeGameButton.addEventListener("click", returnHome)
 
 // Event Handlers
@@ -52,6 +54,7 @@ function display(element) {
 
 function renderGamePlay(player1, player2, view) {
   hide(view);
+  hide(changeGameButton);
   display(gamePlayView);
   gamePlayView.innerHTML =
   `
@@ -88,38 +91,74 @@ function setGameType() {
 function reserveFighterChoice() {
   //updates the humanPlayer class + game class gametype
   game.determineCompChoice();
-  console.log(game.compPlayer.token)
-  console.log(computer.token)
+  computer.token = game.compPlayer.token;
+  //console.log(game.compPlayer.token)
+  //console.log(computer.token)
   if (event.target.closest("#rockIconClassic")) {
     human.token = game.gameData.classic[0];
-    computer.token = game.compPlayer.token;
-    console.log(computer.token)
+    //computer.token = game.compPlayer.token;
+    //console.log(computer.token)
     //game.determineCompChoice();
     // hide(classicFighters);
     // display(gamePlayView);
     renderGamePlay(human, computer, classicFighters);
   } else if (event.target.closest("#paperIconClassic")) {
     human.token = game.gameData.classic[1];
-    computer.token = game.compPlayer.token;
+    //computer.token = game.compPlayer.token;
     //game.determineCompChoice();
     //hide(classicFighters);
     //display(gamePlayView);
     renderGamePlay(human, computer, classicFighters);
   } else if (event.target.closest("#scissorsIconClassic")) {
     human.token = game.gameData.classic[2];
-    computer.token = game.compPlayer.token;
+    //computer.token = game.compPlayer.token;
     //game.determineCompChoice();
     //hide(classicFighters);
     //display(gamePlayView);
     renderGamePlay(human, computer, classicFighters);
   }
-  //bases this on which element the user clicks
-  //calls determineCompChoice from game
-  //updates computer token + game token
-  //hides fighter view
-  //displays game view
-  //renders game view
-  //calls timeout function
+  //difficult fighter logic
+    else if (event.target.closest("#rockIconDiff")) {
+    human.token = game.gameData.difficult[0];
+    //computer.token = game.compPlayer.token;
+    //console.log(computer.token)
+    //game.determineCompChoice();
+    // hide(classicFighters);
+    // display(gamePlayView);
+    renderGamePlay(human, computer, difficultFighters);
+  } else if (event.target.closest("#paperIconDiff")) {
+    human.token = game.gameData.difficult[1];
+    //computer.token = game.compPlayer.token;
+    //console.log(computer.token)
+    //game.determineCompChoice();
+    // hide(classicFighters);
+    // display(gamePlayView);
+    renderGamePlay(human, computer, difficultFighters);
+  } else if (event.target.closest("#scissorsIconDiff")) {
+    human.token = game.gameData.difficult[2];
+    //computer.token = game.compPlayer.token;
+    //console.log(computer.token)
+    //game.determineCompChoice();
+    // hide(classicFighters);
+    // display(gamePlayView);
+    renderGamePlay(human, computer, difficultFighters);
+  } else if (event.target.closest("#alienIconDiff")) {
+    human.token = game.gameData.difficult[3];
+    //computer.token = game.compPlayer.token;
+    //console.log(computer.token)
+    //game.determineCompChoice();
+    // hide(classicFighters);
+    // display(gamePlayView);
+    renderGamePlay(human, computer, difficultFighters);
+  } else if (event.target.closest("#computerIconDiff")) {
+    human.token = game.gameData.difficult[4];
+    //computer.token = game.compPlayer.token;
+    //console.log(computer.token)
+    //game.determineCompChoice();
+    // hide(classicFighters);
+    // display(gamePlayView);
+    renderGamePlay(human, computer, difficultFighters);
+  }
 }
 
 function returnHome() {
