@@ -3,6 +3,17 @@ var gameChoice = document.querySelector("#gameChoice");
 var classicFighters = document.querySelector("#classicFighters");
 var difficultFighters = document.querySelector("#difficultFighters");
 
+//icons
+var rockIconClassic = document.querySelector("#rockIconClassic");
+var paperIconClassic = document.querySelector("#paperIconClassic");
+var scissorsIconClassic = document.querySelector("#scissorsIconClassic");
+
+var rockIconDiff = document.querySelector("#rockIconDiff");
+var paperIconDiff = document.querySelector("#paperIconDiff");
+var scissorsIconDiff = document.querySelector("#scissorsIconDiff");
+var alienIconDiff = document.querySelector("#alienIconDiff");
+var computerIconDiff = document.querySelector("#computerIconDiff");
+
 // Event listeners
 gameChoice.addEventListener("click", setGameType)
 
