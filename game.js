@@ -7,7 +7,7 @@ class Game {
 
     this.gameData = {
      classic: [{name: "rock", image: "./assets/black-and-white-rocks.png"}, {name: "paper", image: "./assets/black-and-white-paper.png"}, {name:"scissors", image: "./assets/black-and-white-scissors.png"}],
-     difficult: [{name: "rock", image: "./assets/black-and-white-rocks.png"}, {name: "paper", image: "./assets/black-and-white-paper.png"}, {name:"scissors", image: "./assets/black-and-white-scissors.png"} {name: "alien", image: "./assets/black-and-white-alien.png"}, {name: "computer", image: "./assets/laptop-computer2.jpeg"}]
+     difficult: [{name: "rock", image: "./assets/black-and-white-rocks.png"}, {name: "paper", image: "./assets/black-and-white-paper.png"}, {name:"scissors", image: "./assets/black-and-white-scissors.png"}, {name: "alien", image: "./assets/black-and-white-alien.png"}, {name: "computer", image: "./assets/laptop-computer2.jpeg"}]
    }
  }
 

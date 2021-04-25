@@ -139,13 +139,15 @@ section.egg {
   flex-shrink: 1;
 }
 
-/* .icon {
-} */
-
-img:hover {
+.icon:hover {
   background-color: rgb(144, 250, 194);
   cursor: pointer;
 }
+
+/* img:hover {
+  background-color: rgb(144, 250, 194);
+  cursor: pointer;
+} */
 
 .card:hover {
   background-color: rgb(144, 250, 194);
