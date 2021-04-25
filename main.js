@@ -1,5 +1,6 @@
 //Global Variables
-var human, computer, game;
+
+var currentGame = {};
 
 // Query Selectors
 ////Game Views
@@ -23,8 +24,11 @@ var computerIconDiff = document.querySelector("#computerIconDiff");
 var changeGameButton = document.querySelector("#changeGame");
 
 // On page player data
-var alienData = document.querySelector("#alienPlayer");
-var computerData = document.querySelector("#computerPlayer");
+var alienData = document.querySelector("#alienWins");
+var computerData = document.querySelector("#computerWins");
+
+// Text changing
+var headerText = document.querySelector("#headerText");
 
 
 // Event listeners
@@ -47,20 +51,14 @@ function display(element) {
   element.classList.remove("invisible");
 }
 
-
-
-// function reveal(element) {
-//   element.classList.remove("invisible");
-// }
-
-function renderGamePlay(player1, player2, view) {
+function renderGamePlay(game, view) {
   hide(view);
   hide(changeGameButton);
   display(gamePlayView);
   gamePlayView.innerHTML =
   `
-  <img src="${player1.token.image}" alt="Drawing of a ${player1.token.name}">
-  <img src="${player2.token.image}" alt="Drawing of a ${player2.token.name}">
+  <img src="${game.humanPlayer.token.image}" alt="Drawing of a ${game.humanPlayer.token.name}">
+  <img src="${game.compPlayer.token.image}" alt="Drawing of a ${game.compPlayer.token.name}">
   `
   setTimeout(function() {
     display(view)
@@ -70,96 +68,66 @@ function renderGamePlay(player1, player2, view) {
   }, 2000);
 }
 
+//Refactor these two functions into one
+function renderPlayerData() {
+    alienData.innerText =`Wins: ${currentGame.humanPlayer.wins}`
+    computerData.innerText = `Wins: ${currentGame.compPlayer.wins}`
+    currentGame.checkForWinner();
+    if (currentGame.winner === "human") {
+      alienData.innerText =`Wins: ${currentGame.humanPlayer.wins}`
+    } else if (currentGame.winner === "computer") {
+      computerData.innerText = `Wins: ${currentGame.compPlayer.wins}`
+    }
+}
+
+function renderHeaderText(word) {
+  return headerText.innerText = `Choose Your ${word}!`
+}
 
 function setGameType() {
   human = new Player("human", "", 0);
   computer = new Player();
-  game = new Game(human, computer, "");
+  currentGame = new Game(human, computer, "");
   hide(gameChoice);
+  renderHeaderText("Fighter");
   if (event.target.closest("#classicCard")) {
     display(classicFighters);
-    game.gameType = "classic";
-    // console.log(game)
-    //try to figure out how to use this return value instead of global variables
-    return [human, computer, game];
+    currentGame.gameType = "classic";
+    return
   } else {
     display(difficultFighters);
-    game.gameType = "difficult";
-    //try to figure out how to use this return value instead of global variables
-    return [human, computer, game];
+    currentGame.gameType = "difficult";
+    return
   }
 }
 
 function reserveFighterChoice() {
-  //updates the humanPlayer class + game class gametype
-  game.determineCompChoice();
-  computer.token = game.compPlayer.token;
-  //console.log(game.compPlayer.token)
-  //console.log(computer.token)
+  currentGame.determineCompChoice();
   if (event.target.closest("#rockIconClassic")) {
-    human.token = game.gameData.classic[0];
-    //computer.token = game.compPlayer.token;
-    //console.log(computer.token)
-    //game.determineCompChoice();
-    // hide(classicFighters);
-    // display(gamePlayView);
-    renderGamePlay(human, computer, classicFighters);
+    currentGame.humanPlayer.takeTurn(currentGame.gameData[0]);
+    renderGamePlay(currentGame, classicFighters);
   } else if (event.target.closest("#paperIconClassic")) {
-    human.token = game.gameData.classic[1];
-    //computer.token = game.compPlayer.token;
-    //game.determineCompChoice();
-    //hide(classicFighters);
-    //display(gamePlayView);
-    renderGamePlay(human, computer, classicFighters);
+    currentGame.humanPlayer.takeTurn(currentGame.gameData[1]);
+    renderGamePlay(currentGame, classicFighters);
   } else if (event.target.closest("#scissorsIconClassic")) {
-    human.token = game.gameData.classic[2];
-    //computer.token = game.compPlayer.token;
-    //game.determineCompChoice();
-    //hide(classicFighters);
-    //display(gamePlayView);
-    renderGamePlay(human, computer, classicFighters);
+    currentGame.humanPlayer.takeTurn(currentGame.gameData[2]);
+    renderGamePlay(currentGame, classicFighters);
   }
-  //difficult fighter logic
     else if (event.target.closest("#rockIconDiff")) {
-    human.token = game.gameData.difficult[0];
-    //computer.token = game.compPlayer.token;
-    //console.log(computer.token)
-    //game.determineCompChoice();
-    // hide(classicFighters);
-    // display(gamePlayView);
-    renderGamePlay(human, computer, difficultFighters);
+    currentGame.humanPlayer.takeTurn(currentGame.gameData[0]);
+    renderGamePlay(currentGame, difficultFighters);
   } else if (event.target.closest("#paperIconDiff")) {
-    human.token = game.gameData.difficult[1];
-    //computer.token = game.compPlayer.token;
-    //console.log(computer.token)
-    //game.determineCompChoice();
-    // hide(classicFighters);
-    // display(gamePlayView);
-    renderGamePlay(human, computer, difficultFighters);
+    currentGame.humanPlayer.takeTurn(currentGame.gameData[1]);
+    renderGamePlay(currentGame, difficultFighters);
   } else if (event.target.closest("#scissorsIconDiff")) {
-    human.token = game.gameData.difficult[2];
-    //computer.token = game.compPlayer.token;
-    //console.log(computer.token)
-    //game.determineCompChoice();
-    // hide(classicFighters);
-    // display(gamePlayView);
-    renderGamePlay(human, computer, difficultFighters);
+    currentGame.humanPlayer.takeTurn(currentGame.gameData[2]);
+    renderGamePlay(currentGame, difficultFighters);
   } else if (event.target.closest("#alienIconDiff")) {
-    human.token = game.gameData.difficult[3];
-    //computer.token = game.compPlayer.token;
-    //console.log(computer.token)
-    //game.determineCompChoice();
-    // hide(classicFighters);
-    // display(gamePlayView);
-    renderGamePlay(human, computer, difficultFighters);
+    currentGame.humanPlayer.takeTurn(currentGame.gameData[3]);
+    renderGamePlay(currentGame, difficultFighters);
   } else if (event.target.closest("#computerIconDiff")) {
-    human.token = game.gameData.difficult[4];
-    //computer.token = game.compPlayer.token;
-    //console.log(computer.token)
-    //game.determineCompChoice();
-    // hide(classicFighters);
-    // display(gamePlayView);
-    renderGamePlay(human, computer, difficultFighters);
+    currentGame.humanPlayer.takeTurn(currentGame.gameData[4]);
+    renderGamePlay(currentGame, difficultFighters);
   }
 }
 
@@ -168,23 +136,7 @@ function returnHome() {
   hide(difficultFighters);
   display(gameChoice);
   hide(changeGameButton);
-}
-
-function renderPlayerData() {
-    game.checkForWinner();
-    if (game.winner === "human") {
-      alienData.innerHTML =
-      `
-      <p>👽</p>
-      <h3>Alien</h3>
-      <p>Wins: ${game.humanPlayer.wins}</p>
-      `
-    } else if (game.winner === "compuer") {
-      computerData.innerHTML =
-      `
-      <p> 🖥 </p>
-      <h3>Computer</h3>
-      <p>Wins: ${game.compPlayer.wins}</p>
-      `
-    }
+  currentGame.resetGame();
+  renderPlayerData();
+  renderHeaderText("Game");
 }
