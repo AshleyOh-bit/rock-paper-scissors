@@ -5,28 +5,51 @@ class Game {
     this.gameType = gameType;
     this.winner = "";
 
-    this.gameData = {
-     classic: [{name: "rock", image: "./assets/black-and-white-rocks.png"}, {name: "paper", image: "./assets/black-and-white-paper.png"}, {name:"scissors", image: "./assets/black-and-white-scissors.png"}],
-     difficult: [{name: "rock", image: "./assets/black-and-white-rocks.png"}, {name: "paper", image: "./assets/black-and-white-paper.png"}, {name:"scissors", image: "./assets/black-and-white-scissors.png"}, {name: "alien", image: "./assets/black-and-white-alien.png"}, {name: "computer", image: "./assets/laptop-computer2.jpeg"}]
-   }
- }
+    this.gameData = [{name: "rock", image: "./assets/black-and-white-rocks.png"},
+                     {name: "paper", image: "./assets/black-and-white-paper.png"},
+                     {name:"scissors", image: "./assets/black-and-white-scissors.png"},
+                     {name: "alien", image: "./assets/black-and-white-alien.png"},
+                     {name: "computer", image: "./assets/laptop-computer2.jpeg"}]
 
- resetGame() {
- // localStorage.clear();
+//original gameData below
+   //  this.gameData = {
+   //   classic: [{name: "rock", image: "./assets/black-and-white-rocks.png"}, {name: "paper", image: "./assets/black-and-white-paper.png"}, {name:"scissors", image: "./assets/black-and-white-scissors.png"}],
+   //   difficult: [{name: "rock", image: "./assets/black-and-white-rocks.png"}, {name: "paper", image: "./assets/black-and-white-paper.png"}, {name:"scissors", image: "./assets/black-and-white-scissors.png"}, {name: "alien", image: "./assets/black-and-white-alien.png"}, {name: "computer", image: "./assets/laptop-computer2.jpeg"}]
+   // }
   }
+
+  resetGame() {
+ // localStorage.clear();
+    }
 
 //you may be able to refactor this out by assigning a conditional regarding gameType
 //to the compPlayer.token and assigning the proper gameData
- determineCompChoice() {
-     var compNum;
-     if (this.gameType === "classic") {
-       compNum = this.compPlayer.takeTurn(this.gameType);
-       return this.compPlayer.token = this.gameData.classic[compNum];
-     } else {
-       compNum = this.compPlayer.takeTurn(this.gameType);
-       return this.compPlayer.token = this.gameData.difficult[compNum];
-     }
-   }
+//original functionality:
+ // determineCompChoice() {
+ //     var compNum;
+ //     if (this.gameType === "classic") {
+ //       compNum = this.compPlayer.takeTurn(this.gameType);
+ //       return this.compPlayer.token = this.gameData.classic[compNum];
+ //     } else {
+ //       compNum = this.compPlayer.takeTurn(this.gameType);
+ //       return this.compPlayer.token = this.gameData.difficult[compNum];
+ //     }
+ //   }
+
+  getRandomIndex(num){
+    return (Math.floor(Math.random() * num))
+  }
+
+    determineCompChoice() {
+      var compNum;
+      if (this.gameType === "classic") {
+        compNum = getRandomIndex(3)
+      } else {
+        compNum = getRandomIndex(5);
+      }
+    }
+
+
 
    //  tested: all good
     classicGameCheck() {
