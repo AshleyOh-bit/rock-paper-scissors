@@ -101,4 +101,5 @@ class Game {
                       return this.winner = this.compPlayer.name;
           }
 
-  }
+        }
+}

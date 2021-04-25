@@ -70,8 +70,8 @@ function renderGamePlay(game, view) {
 
 //Refactor these two functions into one
 function renderPlayerData() {
-  alienData.innerText =`Wins: ${currentGame.humanPlayer.wins}`
-  computerData.innerText = `Wins: ${currentGame.compPlayer.wins}`
+    alienData.innerText =`Wins: ${currentGame.humanPlayer.wins}`
+    computerData.innerText = `Wins: ${currentGame.compPlayer.wins}`
     currentGame.checkForWinner();
     if (currentGame.winner === "human") {
       alienData.innerText =`Wins: ${currentGame.humanPlayer.wins}`
@@ -80,8 +80,8 @@ function renderPlayerData() {
     }
 }
 
-function renderHeaderText() {
-  return headerText.innerText = `Choose Your Fighter!`
+function renderHeaderText(word) {
+  return headerText.innerText = `Choose Your ${word}!`
 }
 
 function setGameType() {
@@ -89,7 +89,7 @@ function setGameType() {
   computer = new Player();
   currentGame = new Game(human, computer, "");
   hide(gameChoice);
-  renderHeaderText();
+  renderHeaderText("Fighter");
   if (event.target.closest("#classicCard")) {
     display(classicFighters);
     currentGame.gameType = "classic";
@@ -138,4 +138,5 @@ function returnHome() {
   hide(changeGameButton);
   currentGame.resetGame();
   renderPlayerData();
+  renderHeaderText("Game");
 }
