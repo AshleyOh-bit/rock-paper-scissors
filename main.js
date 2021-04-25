@@ -34,14 +34,18 @@ function display(element) {
   element.classList.remove("hidden");
 }
 
-function renderGamePlay(humanToken, computerToken, view) {
+function renderGamePlay(player1, player2, view) {
   hide(view);
   display(gamePlayView);
   gamePlayView.innerHTML =
   `
-  <img src=${humanToken.image} alt="Drawing of a ${humanToken.name}">
-  <img src=${computerToken.image} alt="Drawing of a ${computerToken.name}">
+  <img src="${player1.token.image}" alt="Drawing of a ${player1.token.name}">
+  <img src="${player2.token.image}" alt="Drawing of a ${player2.token.name}">
   `
+  setTimeout(function() {
+    display(view)
+    hide(gamePlayView)
+  }, 2000);
 }
 
 
@@ -69,22 +73,23 @@ function reserveFighterChoice() {
   game.determineCompChoice();
   if (event.target.closest("#rockIconClassic")) {
     human.token = game.gameData.classic[0];
+    console.log(computer.token)
     //game.determineCompChoice();
-    //hide(classicFighters);
-    //display(gamePlayView);
-    renderGamePlay(human.token, computer.token, classicFighters);
+    // hide(classicFighters);
+    // display(gamePlayView);
+    renderGamePlay(human, computer, classicFighters);
   } else if (event.target.closest("#paperIconClassic")) {
     human.token = game.gameData.classic[1];
     //game.determineCompChoice();
     //hide(classicFighters);
     //display(gamePlayView);
-    renderGamePlay(human.token, computer.token, classicFighters);
+    renderGamePlay(human, computer, classicFighters);
   } else if (event.target.closest("#scissorsIconClassic")) {
     human.token = game.gameData.classic[2];
     //game.determineCompChoice();
     //hide(classicFighters);
     //display(gamePlayView);
-    renderGamePlay(human.token, computer.token, classicFighters);
+    renderGamePlay(human, computer, classicFighters);
   }
   //bases this on which element the user clicks
   //calls determineCompChoice from game
