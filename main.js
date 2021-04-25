@@ -26,8 +26,8 @@ var computerIconDiff = document.querySelector("#computerIconDiff");
 var changeGameButton = document.querySelector("#changeGame");
 
 // On page player data
-var alienData = document.querySelector("#alienPlayer");
-var computerData = document.querySelector("#computerPlayer");
+var alienData = document.querySelector("#alienWins");
+var computerData = document.querySelector("#computerWins");
 
 // Text changing
 var headerText = document.querySelector("#headerText");
@@ -76,22 +76,33 @@ function renderGamePlay(game, view) {
   }, 2000);
 }
 
+// function renderPlayerData() {
+//     currentGame.checkForWinner();
+//     if (currentGame.winner === "human") {
+//       alienData.innerHTML =
+//       `
+//       <p>👽</p>
+//       <h3>Alien</h3>
+//       <p>Wins: ${currentGame.humanPlayer.wins}</p>
+//       `
+//     } else if (currentGame.winner === "computer") {
+//       computerData.innerHTML =
+//       `
+//       <p> 🖥 </p>
+//       <h3>Computer</h3>
+//       <p>Wins: ${currentGame.compPlayer.wins}</p>
+//       `
+//     }
+// }
+
 function renderPlayerData() {
     currentGame.checkForWinner();
+    // alienData.innerText = "";
+    // computerData.innerText= "";
     if (currentGame.winner === "human") {
-      alienData.innerHTML =
-      `
-      <p>👽</p>
-      <h3>Alien</h3>
-      <p>Wins: ${currentGame.humanPlayer.wins}</p>
-      `
+      alienData.innerText =`Wins: ${currentGame.humanPlayer.wins}`
     } else if (currentGame.winner === "computer") {
-      computerData.innerHTML =
-      `
-      <p> 🖥 </p>
-      <h3>Computer</h3>
-      <p>Wins: ${currentGame.compPlayer.wins}</p>
-      `
+      computerData.innerText = `Wins: ${currentGame.compPlayer.wins}`
     }
 }
 
