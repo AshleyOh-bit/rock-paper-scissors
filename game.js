@@ -19,7 +19,10 @@ class Game {
   }
 
   resetGame() {
+    this.gameType = "";
     this.winner = "";
+    this.humanPlayer.name = "";
+    this.compPlayer.name = "";
     this.humanPlayer.wins = 0;
     this.compPlayer.wins = 0;
      //localStorage.clear();

@@ -96,23 +96,24 @@ function renderGamePlay(game, view) {
 // }
 
 function renderPlayerData() {
+  alienData.innerText =`Wins: ${currentGame.humanPlayer.wins}`
+  computerData.innerText = `Wins: ${currentGame.compPlayer.wins}`
     currentGame.checkForWinner();
-    // alienData.innerText = `Wins: 0`;
-    // computerData.innerText = `Wins: 0`
     if (currentGame.winner === "human") {
       alienData.innerText =`Wins: ${currentGame.humanPlayer.wins}`
     } else if (currentGame.winner === "computer") {
       computerData.innerText = `Wins: ${currentGame.compPlayer.wins}`
     }
-    // else {
-    //   alienData.innerText =`Wins: 0`
-    //   computerData.innerText = `Wins: 0`
-    // }
 }
 
 function renderHeaderText() {
   return headerText.innerText = `Choose Your Fighter!`
 }
+// 
+// function resetGameBoard() {
+//   alienData.innerText =`Wins: ${currentGame.humanPlayer.wins}`
+//   computerData.innerText = `Wins: ${currentGame.compPlayer.wins}`
+// }
 
 function setGameType() {
   human = new Player("human", "", 0);
