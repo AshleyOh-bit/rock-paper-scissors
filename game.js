@@ -43,11 +43,11 @@ class Game {
     determineCompChoice() {
       var compNum;
       if (this.gameType === "classic") {
-        compNum = getRandomIndex(3)
-        return compPlayer.token = this.gameData[compNum]
+        compNum = this.getRandomIndex(3)
+        return this.compPlayer.token = this.gameData[compNum]
       } else {
-        compNum = getRandomIndex(5);
-        return compPlayer.token = this.gameData[compNum]
+        compNum = this.getRandomIndex(5);
+        return this.compPlayer.token = this.gameData[compNum]
       }
     }
 

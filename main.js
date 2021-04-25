@@ -1,5 +1,8 @@
 //Global Variables
-var human, computer, game;
+//original global variables
+//var human, computer, game;
+
+var currentGame = {};
 
 // Query Selectors
 ////Game Views
@@ -53,14 +56,14 @@ function display(element) {
 //   element.classList.remove("invisible");
 // }
 
-function renderGamePlay(player1, player2, view) {
+function renderGamePlay(game, view) {
   hide(view);
   hide(changeGameButton);
   display(gamePlayView);
   gamePlayView.innerHTML =
   `
-  <img src="${player1.token.image}" alt="Drawing of a ${player1.token.name}">
-  <img src="${player2.token.image}" alt="Drawing of a ${player2.token.name}">
+  <img src="${game.humanPlayer.token.image}" alt="Drawing of a ${game.humanPlayer.token.name}">
+  <img src="${game.compPlayer.token.image}" alt="Drawing of a ${game.compPlayer.token.name}">
   `
   setTimeout(function() {
     display(view)
@@ -74,92 +77,96 @@ function renderGamePlay(player1, player2, view) {
 function setGameType() {
   human = new Player("human", "", 0);
   computer = new Player();
-  game = new Game(human, computer, "");
+  currentGame = new Game(human, computer, "");
   hide(gameChoice);
   if (event.target.closest("#classicCard")) {
     display(classicFighters);
-    game.gameType = "classic";
+    currentGame.gameType = "classic";
+    console.log(currentGame)
     // console.log(game)
     //try to figure out how to use this return value instead of global variables
-    return [human, computer, game];
+    return
   } else {
     display(difficultFighters);
-    game.gameType = "difficult";
+    currentGame.gameType = "difficult";
+    console.log(currentGame)
     //try to figure out how to use this return value instead of global variables
-    return [human, computer, game];
+    return
   }
 }
 
 function reserveFighterChoice() {
   //updates the humanPlayer class + game class gametype
-  game.determineCompChoice();
-  computer.token = game.compPlayer.token;
+  currentGame.determineCompChoice();
+  console.log(currentGame.compPlayer)
+  //computer.token = game.compPlayer.token;
   //console.log(game.compPlayer.token)
   //console.log(computer.token)
   if (event.target.closest("#rockIconClassic")) {
-    human.token = game.gameData.classic[0];
+    //call takeTurn?
+    currentGame.humanPlayer.token = currentGame.gameData[0];
     //computer.token = game.compPlayer.token;
     //console.log(computer.token)
     //game.determineCompChoice();
     // hide(classicFighters);
     // display(gamePlayView);
-    renderGamePlay(human, computer, classicFighters);
+    renderGamePlay(currentGame, classicFighters);
   } else if (event.target.closest("#paperIconClassic")) {
-    human.token = game.gameData.classic[1];
+    currentGame.humanPlayer.token = currentGame.gameData[1];
     //computer.token = game.compPlayer.token;
     //game.determineCompChoice();
     //hide(classicFighters);
     //display(gamePlayView);
-    renderGamePlay(human, computer, classicFighters);
+    renderGamePlay(currentGame, classicFighters);
   } else if (event.target.closest("#scissorsIconClassic")) {
-    human.token = game.gameData.classic[2];
+    currentGame.humanPlayer.token = currentGame.gameData[2];
     //computer.token = game.compPlayer.token;
     //game.determineCompChoice();
     //hide(classicFighters);
     //display(gamePlayView);
-    renderGamePlay(human, computer, classicFighters);
+    renderGamePlay(currentGame, classicFighters);
   }
   //difficult fighter logic
     else if (event.target.closest("#rockIconDiff")) {
-    human.token = game.gameData.difficult[0];
+    currentGame.humanPlayer.token = currentGame.gameData[0];
     //computer.token = game.compPlayer.token;
     //console.log(computer.token)
     //game.determineCompChoice();
     // hide(classicFighters);
     // display(gamePlayView);
-    renderGamePlay(human, computer, difficultFighters);
+    renderGamePlay(currentGame, difficultFighters);
   } else if (event.target.closest("#paperIconDiff")) {
-    human.token = game.gameData.difficult[1];
+    currentGame.humanPlayer.token = currentGame.gameData[1];
     //computer.token = game.compPlayer.token;
     //console.log(computer.token)
     //game.determineCompChoice();
     // hide(classicFighters);
     // display(gamePlayView);
-    renderGamePlay(human, computer, difficultFighters);
+    renderGamePlay(currentGame, difficultFighters);
   } else if (event.target.closest("#scissorsIconDiff")) {
-    human.token = game.gameData.difficult[2];
+    currentGame.humanPlayer.token = currentGame.gameData[2];
     //computer.token = game.compPlayer.token;
     //console.log(computer.token)
     //game.determineCompChoice();
     // hide(classicFighters);
     // display(gamePlayView);
-    renderGamePlay(human, computer, difficultFighters);
+    renderGamePlay(currentGame, difficultFighters);
   } else if (event.target.closest("#alienIconDiff")) {
-    human.token = game.gameData.difficult[3];
+    currentGame.humanPlayer.token = currentGame.gameData[3];
     //computer.token = game.compPlayer.token;
     //console.log(computer.token)
     //game.determineCompChoice();
     // hide(classicFighters);
     // display(gamePlayView);
-    renderGamePlay(human, computer, difficultFighters);
+    renderGamePlay(currentGame, difficultFighters);
   } else if (event.target.closest("#computerIconDiff")) {
-    human.token = game.gameData.difficult[4];
+    currentGame.humanPlayer.token = currentGame.gameData[4];
     //computer.token = game.compPlayer.token;
     //console.log(computer.token)
     //game.determineCompChoice();
     // hide(classicFighters);
     // display(gamePlayView);
-    renderGamePlay(human, computer, difficultFighters);
+    renderGamePlay(currentGame, difficultFighters);
   }
 }
 
@@ -177,14 +184,14 @@ function renderPlayerData() {
       `
       <p>👽</p>
       <h3>Alien</h3>
-      <p>Wins: ${game.humanPlayer.wins}</p>
+      <p>Wins: ${currentGame.humanPlayer.wins}</p>
       `
     } else if (game.winner === "compuer") {
       computerData.innerHTML =
       `
       <p> 🖥 </p>
       <h3>Computer</h3>
-      <p>Wins: ${game.compPlayer.wins}</p>
+      <p>Wins: ${currentGame.compPlayer.wins}</p>
       `
     }
 }

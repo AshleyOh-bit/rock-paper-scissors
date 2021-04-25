@@ -11,14 +11,14 @@ class Player {
   }
 
   retrieveWinsFromStorage() {
-   return localStorage.getItem(JSON.parse(this.name))
- }
-
- takeTurn(tokenChoice) {
-   if (!this.token) {
-     this.token = tokenChoice;
+     return localStorage.getItem(JSON.parse(this.name))
    }
- }
+
+   takeTurn(tokenChoice) {
+     if (!this.token) {
+       this.token = tokenChoice;
+     }
+   }
 
  //original functionality below
  //  getRandomIndex(num){
