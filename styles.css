@@ -93,7 +93,7 @@ button {
   height: 50px;
   width: 120px;
   margin: 3%;
-  visibility: hidden;
+  /* visibility: hidden; */
   /* padding: 10px; */
 }
 /*
@@ -122,6 +122,10 @@ section.egg {
   align-items: center;
   width: 70%;
   height: 70%;
+  /* flex-wrap: wrap; */
+}
+
+.difficult-fighters {
   flex-wrap: wrap;
 }
 
@@ -135,11 +139,23 @@ section.egg {
   flex-shrink: 1;
 }
 
-/* .icon {
+.icon:hover {
+  background-color: rgb(144, 250, 194);
+  cursor: pointer;
+}
+
+/* img:hover {
+  background-color: rgb(144, 250, 194);
+  cursor: pointer;
 } */
 
-.card, img:hover {
+.card:hover {
   background-color: rgb(144, 250, 194);
+  cursor: pointer;
+}
+
+.invisible {
+  visibility: hidden;
 }
 
 .hidden {
