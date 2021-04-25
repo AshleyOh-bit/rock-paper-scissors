@@ -29,6 +29,9 @@ var changeGameButton = document.querySelector("#changeGame");
 var alienData = document.querySelector("#alienPlayer");
 var computerData = document.querySelector("#computerPlayer");
 
+// Text changing
+var headerText = document.querySelector("#headerText");
+
 
 // Event listeners
 gameChoice.addEventListener("click", setGameType);
@@ -73,23 +76,46 @@ function renderGamePlay(game, view) {
   }, 2000);
 }
 
+function renderPlayerData() {
+    currentGame.checkForWinner();
+    if (currentGame.winner === "human") {
+      alienData.innerHTML =
+      `
+      <p>👽</p>
+      <h3>Alien</h3>
+      <p>Wins: ${currentGame.humanPlayer.wins}</p>
+      `
+    } else if (currentGame.winner === "computer") {
+      computerData.innerHTML =
+      `
+      <p> 🖥 </p>
+      <h3>Computer</h3>
+      <p>Wins: ${currentGame.compPlayer.wins}</p>
+      `
+    }
+}
+
+function renderHeaderText() {
+  return headerText.innerText = `Choose Your Fighter!`
+}
 
 function setGameType() {
   human = new Player("human", "", 0);
   computer = new Player();
   currentGame = new Game(human, computer, "");
   hide(gameChoice);
+  renderHeaderText();
   if (event.target.closest("#classicCard")) {
     display(classicFighters);
     currentGame.gameType = "classic";
-    console.log(currentGame)
+    //console.log(currentGame)
     // console.log(game)
     //try to figure out how to use this return value instead of global variables
     return
   } else {
     display(difficultFighters);
     currentGame.gameType = "difficult";
-    console.log(currentGame)
+    //console.log(currentGame)
     //try to figure out how to use this return value instead of global variables
     return
   }
@@ -98,7 +124,7 @@ function setGameType() {
 function reserveFighterChoice() {
   //updates the humanPlayer class + game class gametype
   currentGame.determineCompChoice();
-  console.log(currentGame.compPlayer)
+  //console.log(currentGame.compPlayer)
   //computer.token = game.compPlayer.token;
   //console.log(game.compPlayer.token)
   //console.log(computer.token)
@@ -175,23 +201,4 @@ function returnHome() {
   hide(difficultFighters);
   display(gameChoice);
   hide(changeGameButton);
-}
-
-function renderPlayerData() {
-    game.checkForWinner();
-    if (game.winner === "human") {
-      alienData.innerHTML =
-      `
-      <p>👽</p>
-      <h3>Alien</h3>
-      <p>Wins: ${currentGame.humanPlayer.wins}</p>
-      `
-    } else if (game.winner === "compuer") {
-      computerData.innerHTML =
-      `
-      <p> 🖥 </p>
-      <h3>Computer</h3>
-      <p>Wins: ${currentGame.compPlayer.wins}</p>
-      `
-    }
 }
