@@ -23,9 +23,9 @@
 
       <section class="game-board">
         <button id="changeGame" class="change-game">Change game?</button>
-        <div class="game-choice hidden view">
+        <div id="gameChoice" class="game-choice view">
           <!-- <div> -->
-            <div class="classic card">
+            <div id="classicCard" class="classic card">
               <h4 class="game-type">classic</h4>
               <ul>
                 <li>rock > scissors</li>
@@ -33,7 +33,7 @@
                 <li>scissors > paper</li>
               </ul>
             </div>
-            <div class="difficult card">
+            <div id="difficultCard" class="difficult card">
               <h4 class="game-type">difficult</h4>
               <ul>
                 <li>rock > scissors & alien</li>
@@ -45,7 +45,7 @@
            </div>
           <!-- </div> -->
         </div>
-        <div class="classic-fighters view hidden">
+        <div id="classicFighters" class="classic-fighters view hidden">
           <!-- <div class="icon"> -->
             <img id="rockIcon" src= "./assets/black-and-white-rocks.png" alt="Rock icon"/>
           <!-- </div>
@@ -56,14 +56,14 @@
             <img id="scissorsIcon" src= "./assets/black-and-white-scissors.png" alt="Scissors icon"/>
           <!-- </div> -->
         </div>
-        <div class="difficult-fighters view">
+        <div id="difficultFighters" class="difficult-fighters view hidden">
             <img id="rockIcon" src= "./assets/black-and-white-rocks.png" alt="Rock icon"/>
             <img id="paperIcon" src= "./assets/black-and-white-paper.png" alt="Paper icon"/>
             <img id="scissorsIcon" src= "./assets/black-and-white-scissors.png" alt="Scissors icon"/>
             <img id="alienIcon" src= "./assets/black-and-white-alien.png" alt="Alien icon"/>
             <img id="computerIcon" src= "./assets/laptop-computer2.jpeg" alt="Computer icon"/>
         </div>
-        <div class="game-play view hidden">
+        <div id="gamePlay" class="game-play view hidden">
         </div>
       </section>
 

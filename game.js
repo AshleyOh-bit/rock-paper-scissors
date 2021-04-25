@@ -15,6 +15,8 @@ class Game {
  // localStorage.clear();
   }
 
+//you may be able to refactor this out by assigning a conditional regarding gameType
+//to the compPlayer.token and assigning the proper gameData
  determineCompChoice() {
      var compNum;
      if (this.gameType === "classic") {

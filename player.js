@@ -60,19 +60,19 @@ class Player {
   //scissors beats paper and alien
   //alien beats rock and paper
   //computer beats alien and scissors
-
-  var ashley = new Player("ash", "alien", 0);
-  var compy = new Player("gertrund.0", "", 0);
-
-  var secondGame = new Game(ashley, compy, "difficult");
+  // 
+  // var ashley = new Player("ash", "alien", 0);
+  // var compy = new Player("gertrund.0", "", 0);
+  //
+  // var secondGame = new Game(ashley, compy, "difficult");
 
   //checks to ensure everything is working correctly
-  console.log("computer picked " + secondGame.compPlayer.token);
-  console.log("human token " + ashley.takeTurn("difficult"));
-
-
-  console.log("computer choice " + secondGame.determineCompChoice())
-
-  secondGame.difficultGameCheck();
-
-  console.log(secondGame.winner);
+  // console.log("computer picked " + secondGame.compPlayer.token);
+  // console.log("human token " + ashley.takeTurn("difficult"));
+  //
+  //
+  // console.log("computer choice " + secondGame.determineCompChoice())
+  //
+  // secondGame.difficultGameCheck();
+  //
+  // console.log(secondGame.winner);

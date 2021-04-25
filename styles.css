@@ -122,6 +122,10 @@ section.egg {
   align-items: center;
   width: 70%;
   height: 70%;
+  /* flex-wrap: wrap; */
+}
+
+.difficult-fighters {
   flex-wrap: wrap;
 }
 
@@ -138,8 +142,14 @@ section.egg {
 /* .icon {
 } */
 
-.card, img:hover {
+img:hover {
   background-color: rgb(144, 250, 194);
+  cursor: pointer;
+}
+
+.card:hover {
+  background-color: rgb(144, 250, 194);
+  cursor: pointer;
 }
 
 .hidden {
