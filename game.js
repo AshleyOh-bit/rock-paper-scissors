@@ -6,7 +6,7 @@ class Game {
     this.winner = "";
 
     this.gameData = {
-     classic: ["rock", "paper", "scissors"],
+     classic: [{name: "rock", image: "./assets/black-and-white-rocks.png"}, {name: "paper", image: "./assets/black-and-white-paper.png"}, {name:"scissors", image: "./assets/black-and-white-scissors.png"}],
      difficult: ["rock", "paper", "scissors", "alien", "computer"]
    }
  }
@@ -20,7 +20,7 @@ class Game {
  determineCompChoice() {
      var compNum;
      if (this.gameType === "classic") {
-       compNum = compPlayer.takeTurn(this.gameType);
+       compNum = this.compPlayer.takeTurn(this.gameType);
        return this.compPlayer.token = this.gameData.classic[compNum];
      } else {
        compNum = this.compPlayer.takeTurn(this.gameType);
@@ -32,13 +32,16 @@ class Game {
     classicGameCheck() {
       if (this.humanPlayer.token === this.compPlayer.token) {
         return this.winner = false;
-      } else if (this.humanPlayer.token === "rock" && this.compPlayer.token === "scissors") {
+
+      } else if (this.humanPlayer.token.name === "rock" && this.compPlayer.token.name === "scissors") {
         this.humanPlayer.wins++;
         return this.winner = this.humanPlayer.name;
-      } else if (this.humanPlayer.token === "rock" && this.compPlayer.token === "paper") {
+
+      } else if (this.humanPlayer.token.name === "rock" && this.compPlayer.token.name === "paper") {
         this.compPlayer.wins++;
         return this.winner = this.compPlayer.name;
-      } else if (this.humanPlayer.token === "paper" && this.compPlayer.token === "rock") {
+
+      } else if (this.humanPlayer.token.name === "paper" && this.compPlayer.token === "rock") {
         this.humanPlayer.wins++;
         return this.winner = this.humanPlayer.name;
       } else if (this.humanPlayer.token === "paper" && this.compPlayer.token === "scissors") {
