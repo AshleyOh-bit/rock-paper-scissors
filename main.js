@@ -23,7 +23,8 @@ var computerIconDiff = document.querySelector("#computerIconDiff");
 var changeGameButton = document.querySelector("#changeGame");
 
 // On page player data
-// var alienData = document.querySelector("#alienPlayer");
+var alienData = document.querySelector("#alienPlayer");
+var computerData = document.querySelector("#computerPlayer");
 
 
 // Event listeners
@@ -65,6 +66,7 @@ function renderGamePlay(player1, player2, view) {
     display(view)
     hide(gamePlayView)
     display(changeGameButton)
+    renderPlayerData();
   }, 2000);
 }
 
@@ -166,4 +168,23 @@ function returnHome() {
   hide(difficultFighters);
   display(gameChoice);
   hide(changeGameButton);
+}
+
+function renderPlayerData() {
+    game.checkForWinner();
+    if (game.winner === "human") {
+      alienData.innerHTML =
+      `
+      <p>👽</p>
+      <h3>Alien</h3>
+      <p>Wins: ${game.humanPlayer.wins}</p>
+      `
+    } else if (game.winner === "compuer") {
+      computerData.innerHTML =
+      `
+      <p> 🖥 </p>
+      <h3>Computer</h3>
+      <p>Wins: ${game.compPlayer.wins}</p>
+      `
+    }
 }
