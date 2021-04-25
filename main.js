@@ -65,21 +65,22 @@ function setGameType() {
 
 function reserveFighterChoice() {
   //updates the humanPlayer class + game class gametype
+  game.determineCompChoice();
   if (event.target.closest("#rockIconClassic")) {
     human.token = game.gameData.classic[0];
-    game.determineCompChoice();
+    //game.determineCompChoice();
     hide(classicFighters);
     display(gamePlayView);
     renderGamePlay(human.token, computer.token);
   } else if (event.target.closest("#paperIconClassic")) {
     human.token = game.gameData.classic[1];
-    game.determineCompChoice();
+    //game.determineCompChoice();
     hide(classicFighters);
     display(gamePlayView);
     renderGamePlay(human.token, computer.token);
   } else if (event.target.closest("#scissorsIconClassic")) {
     human.token = game.gameData.classic[2];
-    game.determineCompChoice();
+    //game.determineCompChoice();
     hide(classicFighters);
     display(gamePlayView);
     renderGamePlay(human.token, computer.token);
