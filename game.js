@@ -7,7 +7,7 @@ class Game {
 
     this.gameData = {
      classic: [{name: "rock", image: "./assets/black-and-white-rocks.png"}, {name: "paper", image: "./assets/black-and-white-paper.png"}, {name:"scissors", image: "./assets/black-and-white-scissors.png"}],
-     difficult: ["rock", "paper", "scissors", "alien", "computer"]
+     difficult: [{name: "rock", image: "./assets/black-and-white-rocks.png"}, {name: "paper", image: "./assets/black-and-white-paper.png"}, {name:"scissors", image: "./assets/black-and-white-scissors.png"} {name: "alien", image: "./assets/black-and-white-alien.png"}, {name: "computer", image: "./assets/laptop-computer2.jpeg"}]
    }
  }
 
@@ -41,16 +41,19 @@ class Game {
         this.compPlayer.wins++;
         return this.winner = this.compPlayer.name;
 
-      } else if (this.humanPlayer.token.name === "paper" && this.compPlayer.token === "rock") {
+      } else if (this.humanPlayer.token.name === "paper" && this.compPlayer.token.name === "rock") {
         this.humanPlayer.wins++;
         return this.winner = this.humanPlayer.name;
-      } else if (this.humanPlayer.token === "paper" && this.compPlayer.token === "scissors") {
+
+      } else if (this.humanPlayer.token.name === "paper" && this.compPlayer.token.name === "scissors") {
         this.compPlayer.wins++;
         return this.winner = this.compPlayer.name;
-      } else if (this.humanPlayer.token === "scissors" && this.compPlayer.token === "paper") {
+
+      } else if (this.humanPlayer.token.name === "scissors" && this.compPlayer.token.name === "paper") {
         this.humanPlayer.wins++;
         return this.winner = this.humanPlayer.name;
-      } else if (this.humanPlayer.token === "scissors" && this.compPlayer.token === "rock") {
+
+      } else if (this.humanPlayer.token.name === "scissors" && this.compPlayer.token.name === "rock") {
         this.compPlayer.wins++;
         return this.winner = this.compPlayer.name;
       }
@@ -68,35 +71,43 @@ class Game {
         if (this.humanPlayer.token === this.compPlayer.token) {
           return this.winner = false;
       //check if the human player wins
-        } else if (this.humanPlayer.token === "rock" &&   ((this.compPlayer.token === "scissors") || (this.compPlayer.token === "computer"))) {
+    } else if (this.humanPlayer.token.name === "rock" &&   ((this.compPlayer.token.name === "scissors") || (this.compPlayer.token.name === "computer"))) {
           this.humanPlayer.wins++;
           return this.winner = this.humanPlayer.name;
-        } else if (this.humanPlayer.token === "paper" &&   ((this.compPlayer.token === "rock") || (this.compPlayer.token === "computer"))) {
+
+        } else if (this.humanPlayer.token.name === "paper" &&   ((this.compPlayer.token.name === "rock") || (this.compPlayer.token.name === "computer"))) {
           this.humanPlayer.wins++;
           return this.winner = this.humanPlayer.name;
-          } else if (this.humanPlayer.token === "scissors" &&   ((this.compPlayer.token === "paper") || (this.compPlayer.token === "alien"))) {
+
+        } else if (this.humanPlayer.token.name === "scissors" &&   ((this.compPlayer.token.name === "paper") || (this.compPlayer.token.name === "alien"))) {
           this.humanPlayer.wins++;
           return this.winner = this.humanPlayer.name;
-          } else if (this.humanPlayer.token === "alien" &&   ((this.compPlayer.token === "paper") || (this.compPlayer.token === "rock"))) {
+
+        } else if (this.humanPlayer.token.name === "alien" &&   ((this.compPlayer.token.name === "paper") || (this.compPlayer.token.name === "rock"))) {
           this.humanPlayer.wins++;
           return this.winner = this.humanPlayer.name;
-          } else if (this.humanPlayer.token === "computer" &&   ((this.compPlayer.token === "alien") || (this.compPlayer.token === "scissors"))) {
+
+        } else if (this.humanPlayer.token.name === "computer" &&   ((this.compPlayer.token.name === "alien") || (this.compPlayer.token.name === "scissors"))) {
           this.humanPlayer.wins++;
           return this.winner = this.humanPlayer.name;
           //check if computer wins
-          } else if (this.compPlayer.token === "rock" && (this.humanPlayer.token === "scissors") || (this.humanPlayer.token === "computer")) {
+        } else if (this.compPlayer.token.name === "rock" && (this.humanPlayer.token.name === "scissors") || (this.humanPlayer.token.name === "computer")) {
             this.compPlayer.wins++;
             return this.winner = this.compPlayer.name;
-          } else if (this.compPlayer.token === "paper" && (this.humanPlayer.token === "rock") || (this.humanPlayer.token === "computer")) {
+
+          } else if (this.compPlayer.token.name === "paper" && (this.humanPlayer.token.name === "rock") || (this.humanPlayer.token.name === "computer")) {
             this.compPlayer.wins++;
             return this.winner = this.compPlayer.name;
-          } else if (this.compPlayer.token === "scissors" && (this.humanPlayer.token === "paper") || (this.humanPlayer.token === "alien")) {
+
+          } else if (this.compPlayer.token.name === "scissors" && (this.humanPlayer.token.name === "paper") || (this.humanPlayer.token.name === "alien")) {
             this.compPlayer.wins++;
             return this.winner = this.compPlayer.name;
-          } else if (this.compPlayer.token === "alien" && (this.humanPlayer.token === "rock") || (this.humanPlayer.token === "paper")) {
+
+          } else if (this.compPlayer.token.name === "alien" && (this.humanPlayer.token.name === "rock") || (this.humanPlayer.token.name === "paper")) {
             this.compPlayer.wins++;
             return this.winner = this.compPlayer.name;
-          } else if (this.compPlayer.token === "computer" && (this.humanPlayer.token === "alien") || (this.humanPlayer.token === "scissors")) {
+
+          } else if (this.compPlayer.token.name === "computer" && (this.humanPlayer.token.name === "alien") || (this.humanPlayer.token.name === "scissors")) {
             this.compPlayer.wins++;
             return this.winner = this.compPlayer.name;
             //remove this console.log if it works
