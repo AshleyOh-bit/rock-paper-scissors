@@ -14,20 +14,27 @@ class Player {
    return localStorage.getItem(JSON.parse(this.name))
  }
 
-  getRandomIndex(num){
-   return (Math.floor(Math.random() * num))
+ takeTurn(tokenChoice) {
+   if (!this.token) {
+     this.token = tokenChoice;
+   }
  }
 
-  takeTurn(gameChoice) {
-    if (!this.token && gameChoice === "classic") {
-      return this.getRandomIndex(3)
-    } else if (!this.token && gameChoice === "difficult") {
-      return this.getRandomIndex(5)
-    } else {
-      return this.token
-    }
+ //original functionality below
+ //  getRandomIndex(num){
+ //   return (Math.floor(Math.random() * num))
+ // }
 
-  }
+  // takeTurn(gameChoice) {
+  //   if (!this.token && gameChoice === "classic") {
+  //     return this.getRandomIndex(3)
+  //   } else if (!this.token && gameChoice === "difficult") {
+  //     return this.getRandomIndex(5)
+  //   } else {
+  //     return this.token
+  //   }
+  //
+  // }
 }
 
 //REMOVE THESE CONSOLE LOGS BEFORE DEPLOYMENT:
@@ -60,7 +67,7 @@ class Player {
   //scissors beats paper and alien
   //alien beats rock and paper
   //computer beats alien and scissors
-  // 
+  //
   // var ashley = new Player("ash", "alien", 0);
   // var compy = new Player("gertrund.0", "", 0);
   //
