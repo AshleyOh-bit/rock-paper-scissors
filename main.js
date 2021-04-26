@@ -32,6 +32,8 @@ var headerText = document.querySelector("#headerText");
 
 
 // Event listeners
+//window.onload = renderWins();
+//window.onload = currentGame.computerPlayer.retrieveWinsFromStorage();
 gameChoice.addEventListener("click", setGameType);
 classicFighters.addEventListener("click", reserveFighterChoice);
 difficultFighters.addEventListener("click", reserveFighterChoice);
@@ -68,16 +70,28 @@ function renderGamePlay(game, view) {
   }, 2000);
 }
 
+//Local Storage onload
+function renderWins() {
+  var humanWins = currentGame.humanPlayer.retrieveWinsFromStorage();
+  var compWins = currentGame.compPlayer.retrieveWinsFromStorage();
+  alienData.innerText = `Wins: ${humanWins}`
+  computerData.innerText = `Wins: ${compWins}`
+
+}
+
 //Refactor these two functions into one
 function renderPlayerData() {
-    alienData.innerText =`Wins: ${currentGame.humanPlayer.wins}`
-    computerData.innerText = `Wins: ${currentGame.compPlayer.wins}`
+    // alienData.innerText =`Wins: ${currentGame.humanPlayer.wins}`
+    // computerData.innerText = `Wins: ${currentGame.compPlayer.wins}`
     currentGame.checkForWinner();
-    if (currentGame.winner === "human") {
-      alienData.innerText =`Wins: ${currentGame.humanPlayer.wins}`
-    } else if (currentGame.winner === "computer") {
-      computerData.innerText = `Wins: ${currentGame.compPlayer.wins}`
-    }
+    currentGame.humanPlayer.saveWinsToStorage();
+    currentGame.compPlayer.saveWinsToStorage();
+    renderWins();
+    // if (currentGame.winner === "human") {
+    //   alienData.innerText =`Wins: ${currentGame.humanPlayer.wins}`
+    // } else if (currentGame.winner === "computer") {
+    //   computerData.innerText = `Wins: ${currentGame.compPlayer.wins}`
+    // }
 }
 
 function renderHeaderText(word) {
@@ -136,7 +150,8 @@ function returnHome() {
   hide(difficultFighters);
   display(gameChoice);
   hide(changeGameButton);
-  currentGame.resetGame();
-  renderPlayerData();
+  //currentGame.resetGame();
+  //renderPlayerData();
+  renderWins();
   renderHeaderText("Game");
 }
