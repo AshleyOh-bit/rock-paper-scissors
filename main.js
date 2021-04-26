@@ -1,6 +1,6 @@
 //Global Variables
 
-var currentGame = {};
+var currentGame;
 
 // Query Selectors
 ////Game Views
@@ -99,9 +99,14 @@ function renderHeaderText(word) {
 }
 
 function setGameType() {
-  human = new Player("human", "", 0);
-  computer = new Player();
-  currentGame = new Game(human, computer, "");
+  if (!currentGame) {
+    human = new Player("human", "", 0);
+    computer = new Player();
+    currentGame = new Game(human, computer, "");
+  } else {
+    currentGame.type = ""
+  }
+
   hide(gameChoice);
   renderHeaderText("Fighter");
   if (event.target.closest("#classicCard")) {
