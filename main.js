@@ -104,12 +104,17 @@ function checkLocalStorage() {
 
 function renderPlayerData() {
   setLocalStorage();
-  if (!currentGame.humanPlayer.wins || !currentGame.humanPlayer.wins) {
+  if (!currentGame.humanPlayer.wins && !currentGame.compPlayer.wins) {
     alienData.innerText = `Wins: 0`
-    //computerData.innerText = `Wins: 0`
-  // } else if (!currentGame.compPlayer.wins){
     computerData.innerText = `Wins: 0`
-    //setLocalStorage();
+  } else if (!currentGame.compPlayer.wins) {
+    computerData.innerText = `Wins: 0`
+    alienData.innerText = `Wins: ${currentGame.humanPlayer.wins}`
+  //   console.log(currentGame.humanPlayer.wins);
+  //   console.log(currentGame.compPlayer.wins);
+  } else if (!currentGame.humanPlayer.wins) {
+    alienData.innerText = `Wins: 0`
+    computerData.innerText = `Wins: ${currentGame.compPlayer.wins}`
   } else {
     alienData.innerText = `Wins: ${currentGame.humanPlayer.wins}`
     computerData.innerText = `Wins: ${currentGame.compPlayer.wins}`
