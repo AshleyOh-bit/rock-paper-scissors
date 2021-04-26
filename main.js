@@ -10,15 +10,15 @@ var difficultFighters = document.querySelector("#difficultFighters");
 var gamePlayView = document.querySelector("#gamePlay");
 
 //// Icons
-var rockIconClassic = document.querySelector("#rockIconClassic");
-var paperIconClassic = document.querySelector("#paperIconClassic");
-var scissorsIconClassic = document.querySelector("#scissorsIconClassic");
-
-var rockIconDiff = document.querySelector("#rockIconDiff");
-var paperIconDiff = document.querySelector("#paperIconDiff");
-var scissorsIconDiff = document.querySelector("#scissorsIconDiff");
-var alienIconDiff = document.querySelector("#alienIconDiff");
-var computerIconDiff = document.querySelector("#computerIconDiff");
+// var rockIconClassic = document.querySelector("#rockIconClassic");
+// var paperIconClassic = document.querySelector("#paperIconClassic");
+// var scissorsIconClassic = document.querySelector("#scissorsIconClassic");
+//
+// var rockIconDiff = document.querySelector("#rockIconDiff");
+// var paperIconDiff = document.querySelector("#paperIconDiff");
+// var scissorsIconDiff = document.querySelector("#scissorsIconDiff");
+// var alienIconDiff = document.querySelector("#alienIconDiff");
+// var computerIconDiff = document.querySelector("#computerIconDiff");
 
 // Button
 var changeGameButton = document.querySelector("#changeGame");
@@ -32,7 +32,11 @@ var headerText = document.querySelector("#headerText");
 
 
 // Event listeners
-//window.onload = renderWins();
+//window.addEventListener("load", renderWins);
+// window.addEventListener("load", function() {
+//   event.preventDefault();
+// })
+window.addEventListener("load", instantiateNewGame);
 //window.onload = currentGame.computerPlayer.retrieveWinsFromStorage();
 gameChoice.addEventListener("click", setGameType);
 classicFighters.addEventListener("click", reserveFighterChoice);
@@ -40,6 +44,11 @@ difficultFighters.addEventListener("click", reserveFighterChoice);
 changeGameButton.addEventListener("click", returnHome)
 
 // Event Handlers
+function preventDefault() {
+  event.preventDefault();
+}
+
+
 function hide(element) {
   if (element === changeGameButton) {
     element.classList.add("invisible")
@@ -67,10 +76,14 @@ function renderGamePlay(game, view) {
     hide(gamePlayView)
     display(changeGameButton)
     renderPlayerData();
-  }, 2000);
+  }, 3000);
 }
 
 //Local Storage onload
+function checkLocalStorage() {
+
+}
+
 function renderWins() {
   var humanWins = currentGame.humanPlayer.retrieveWinsFromStorage();
   var compWins = currentGame.compPlayer.retrieveWinsFromStorage();
@@ -98,14 +111,34 @@ function renderHeaderText(word) {
   return headerText.innerText = `Choose Your ${word}!`
 }
 
-function setGameType() {
+function instantiateNewGame() {
   if (!currentGame) {
-    human = new Player("human", "", 0);
-    computer = new Player();
+    // var humanWins = currentGame.humanPlayer.retrieveWinsFromStorage();
+    // var compWins = currentGame.compPlayer.retrieveWinsFromStorage();
+    human = new Player("human");
+    computer = new Player("computer");
     currentGame = new Game(human, computer, "");
-  } else {
-    currentGame.type = ""
+    var humanWins = currentGame.humanPlayer.retrieveWinsFromStorage();
+    var compWins = currentGame.compPlayer.retrieveWinsFromStorage();
+    currentGame.humanPlayer.wins = humanWins;
+    currentGame.compPlayer.wins = compWins;
   }
+  // renderPlayerData();
+  renderWins();
+  // else {
+  //   currentGame.type = ""
+  // }
+}
+
+function setGameType() {
+  // if (!currentGame) {
+  //   human = new Player("human", "", 0);
+  //   computer = new Player();
+  //   currentGame = new Game(human, computer, "");
+  // }
+  // else {
+  //   currentGame.type = ""
+  // }
 
   hide(gameChoice);
   renderHeaderText("Fighter");
