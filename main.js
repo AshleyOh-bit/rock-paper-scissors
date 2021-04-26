@@ -37,6 +37,7 @@ var headerText = document.querySelector("#headerText");
 //   event.preventDefault();
 // })
 window.addEventListener("load", instantiateNewGame);
+// window.addEventListener("load", checkLocalStorage);
 //window.onload = currentGame.computerPlayer.retrieveWinsFromStorage();
 gameChoice.addEventListener("click", setGameType);
 classicFighters.addEventListener("click", reserveFighterChoice);
@@ -44,9 +45,9 @@ difficultFighters.addEventListener("click", reserveFighterChoice);
 changeGameButton.addEventListener("click", returnHome)
 
 // Event Handlers
-function preventDefault() {
-  event.preventDefault();
-}
+// function preventDefault() {
+//   event.preventDefault();
+// }
 
 
 function hide(element) {
@@ -75,36 +76,52 @@ function renderGamePlay(game, view) {
     display(view)
     hide(gamePlayView)
     display(changeGameButton)
+    currentGame.checkForWinner();
     renderPlayerData();
   }, 3000);
 }
 
 //Local Storage onload
 function checkLocalStorage() {
-
+  if (!localStorage.getItem("human") || !localStorage.getItem("computer")) {
+    instantiateNewGame()
+  }  else {
+    renderPlayerData();
+  }
 }
 
-function renderWins() {
-  var humanWins = currentGame.humanPlayer.retrieveWinsFromStorage();
-  var compWins = currentGame.compPlayer.retrieveWinsFromStorage();
-  alienData.innerText = `Wins: ${humanWins}`
-  computerData.innerText = `Wins: ${compWins}`
+// function renderWins(humanWins, compWins) {
+//   // var humanWins = currentGame.humanPlayer.retrieveWinsFromStorage();
+//   // var compWins = currentGame.compPlayer.retrieveWinsFromStorage();
+//   // if (!localStorage.getItem("human") || !localStorge.getItem("computer")) {
+//   //   alienData.innerText = `Wins: ${humanWins}`
+//   // }
+//   alienData.innerText = `Wins: ${currentGame.humanPlayer.wins}`
+//   computerData.innerText = `Wins: ${currentGame.compPlayer.wins}`
+//
+// }
 
-}
 
-//Refactor these two functions into one
 function renderPlayerData() {
-    // alienData.innerText =`Wins: ${currentGame.humanPlayer.wins}`
+  setLocalStorage();
+  if (!currentGame.humanPlayer.wins || !currentGame.humanPlayer.wins) {
+    alienData.innerText = `Wins: 0`
+    //computerData.innerText = `Wins: 0`
+  // } else if (!currentGame.compPlayer.wins){
+    computerData.innerText = `Wins: 0`
+    //setLocalStorage();
+  } else {
+    alienData.innerText = `Wins: ${currentGame.humanPlayer.wins}`
+    computerData.innerText = `Wins: ${currentGame.compPlayer.wins}`
+  }
+    // setLocalStorage();
+    // alienData.innerText = `Wins: ${currentGame.humanPlayer.wins}`
     // computerData.innerText = `Wins: ${currentGame.compPlayer.wins}`
-    currentGame.checkForWinner();
+}
+
+function setLocalStorage() {
     currentGame.humanPlayer.saveWinsToStorage();
     currentGame.compPlayer.saveWinsToStorage();
-    renderWins();
-    // if (currentGame.winner === "human") {
-    //   alienData.innerText =`Wins: ${currentGame.humanPlayer.wins}`
-    // } else if (currentGame.winner === "computer") {
-    //   computerData.innerText = `Wins: ${currentGame.compPlayer.wins}`
-    // }
 }
 
 function renderHeaderText(word) {
@@ -112,19 +129,21 @@ function renderHeaderText(word) {
 }
 
 function instantiateNewGame() {
-  if (!currentGame) {
-    // var humanWins = currentGame.humanPlayer.retrieveWinsFromStorage();
-    // var compWins = currentGame.compPlayer.retrieveWinsFromStorage();
-    human = new Player("human");
-    computer = new Player("computer");
+  // if (!currentGame) {
+    human = new Player("human", "", humanWins);
+    computer = new Player("computer", "", compWins);
     currentGame = new Game(human, computer, "");
+    //setLocalStorage();
     var humanWins = currentGame.humanPlayer.retrieveWinsFromStorage();
     var compWins = currentGame.compPlayer.retrieveWinsFromStorage();
     currentGame.humanPlayer.wins = humanWins;
     currentGame.compPlayer.wins = compWins;
-  }
-  // renderPlayerData();
-  renderWins();
+    renderPlayerData();
+  // } else {
+  //   renderPlayerData();
+  // }
+
+  // renderWins(humanWins, compWins);
   // else {
   //   currentGame.type = ""
   // }
@@ -189,7 +208,7 @@ function returnHome() {
   display(gameChoice);
   hide(changeGameButton);
   //currentGame.resetGame();
-  //renderPlayerData();
-  renderWins();
+  renderPlayerData();
+  // renderWins();
   renderHeaderText("Game");
 }
