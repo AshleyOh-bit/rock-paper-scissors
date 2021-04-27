@@ -44,10 +44,7 @@ function renderGamePlay(game, view) {
   display(gamePlayView);
   gamePlayView.innerHTML =
   `
-  <!-- <div class="icon-box">
-  <span>👽</span> -->
-  <img class="player-choice"src="${game.humanPlayer.token.image}" alt="Drawing of a ${game.humanPlayer.token.name}">
-  <!-- </div> -->
+  <img src="${game.humanPlayer.token.image}" alt="Drawing of a ${game.humanPlayer.token.name}">
   <img src="${game.compPlayer.token.image}" alt="Drawing of a ${game.compPlayer.token.name}">
   `
   setTimeout(function() {
