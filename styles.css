@@ -1,7 +1,3 @@
-* {
-  border: blue solid 1px
-}
-
 html {
   background-image: url(./assets/tropical-planet.jpg);
   height: 100%;
@@ -17,8 +13,6 @@ body {
 
 header {
   align-items: center;
-  background-color: rgb(81, 173, 189);
-  border-radius: 10%;
   color: rgb(255, 255, 255);
   display: flex;
   height: 15%;
