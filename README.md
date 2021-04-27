@@ -76,3 +76,11 @@ HTML
 - GitHub as remote host
 
 ## Challenges & Reflections
+
+I started this project with a great deal of trepidation. I was overwhelmed by what was expected, from building out the HTML, to writing interface-independent JavaScript, to implementing my JavaScript with my visual goals in mind. I started by wireframing the HTML for the spec provided, thinking that I would not be able to handle the design expectations of building my own version. I quickly realized that I was struggling because I didn't like the design of the comp, and quickly built my own version of the application. This was a learning moment for me, realizing that learning CSS and HTML, while not my favorite element of web development, comes much easier if I feel compelled by the design. I recognize this will be something to overcome in the future as I look for work in the professional realm.
+
+When I began to write the JavaScript, I was very burnt out from the final assessment. My eyes hurt from looking at the screen, so I started by writing it out with a pencil and paper. This provided a solid foundation for almost all implementation forthwith, and I will use this strategy in the future. My first major logical hurdle came with connecting the DOM to my data model -  this took a lot of brain power for me. My data was not set up to be as dynamic as I needed it to be for the DOM to accurately interact and reflect the changes to the data model as prescribed by the user. I did a data "deep clean", put my game data in an array of objects, and scrubbed by game class logic and subsequent DOM requests. This fixed the strange errors and eliminated a bug I didn't know how to approach.
+
+The final and largest hurdle for me involved local storage. I struggled to call local storage at the proper time, and often confused the browser with what I was asking upon refresh. I absolved this by rubber ducking and implementing conditions to my main.js file to assess the state of local storage and reflect that storage on the DOM. I still have a lot of growing to do in this area, but I feel I walked away understanding much more than when I started the project.
+
+Overall, I feel proud of this app. It has exceeded my expectations in functionality and design. Even though I would love to refactor and tweak and add features for much longer, I feel satisfied with what my days of effort have produced.
