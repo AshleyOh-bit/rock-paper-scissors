@@ -38,6 +38,10 @@ function display(element) {
   element.classList.remove("hidden");
 }
 
+function renderHeaderText(word) {
+  return headerText.innerText = `Choose Your ${word}!`
+}
+
 function renderGamePlay(game, view) {
   hide(view);
   hide(changeGameButton);
@@ -76,10 +80,6 @@ function renderPlayerData() {
 function setLocalStorage() {
     currentGame.humanPlayer.saveWinsToStorage();
     currentGame.compPlayer.saveWinsToStorage();
-}
-
-function renderHeaderText(word) {
-  return headerText.innerText = `Choose Your ${word}!`
 }
 
 function instantiateNewGame() {
