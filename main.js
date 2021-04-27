@@ -4,32 +4,32 @@ var currentGame;
 
 // Query Selectors
 ////Game Views
-var classicFighters = document.querySelector("#classicFighters");
-var difficultFighters = document.querySelector("#difficultFighters");
+var fighterChoiceView = document.querySelector("#fighterChoice");
 var gameChoice = document.querySelector("#gameChoice");
 var gamePlayView = document.querySelector("#gamePlay");
 
 // Button
 var changeGameButton = document.querySelector("#changeGame");
 
-// On page player data
+// On Page Player Data
 var alienData = document.querySelector("#alienWins");
 var computerData = document.querySelector("#computerWins");
 
-// Text changing
+// Text
 var headerText = document.querySelector("#headerText");
 
 
 // Event listeners
 changeGameButton.addEventListener("click", returnHome);
-classicFighters.addEventListener("click", reserveFighterChoice);
-difficultFighters.addEventListener("click", function() {
+fighterChoiceView.addEventListener("click", function() {
   reserveFighterChoice(event)});
-gameChoice.addEventListener("click", setGameType);
+gameChoice.addEventListener("click", function() {
+  setGameType(event)});
 window.addEventListener("load", instantiateNewGame);
 
 
 // Event Handlers
+// Hide/Display Functions
 function hide(element) {
     element.classList.add("hidden");
 }
@@ -38,17 +38,23 @@ function display(element) {
   element.classList.remove("hidden");
 }
 
-function renderGamePlay(game, view) {
-  hide(view);
+// Rendering Functions
+function renderHeaderText(word) {
+  return headerText.innerText = `Choose Your ${word}!`
+}
+
+function renderGamePlay() {
+  hide(headerText);
+  hide(fighterChoiceView);
   hide(changeGameButton);
   display(gamePlayView);
   gamePlayView.innerHTML =
   `
-  <img src="${game.humanPlayer.token.image}" alt="Drawing of a ${game.humanPlayer.token.name}">
-  <img src="${game.compPlayer.token.image}" alt="Drawing of a ${game.compPlayer.token.name}">
+  <img src="${currentGame.humanPlayer.token.image}" alt="Drawing of a ${currentGame.humanPlayer.token.name}">
+  <img src="${currentGame.compPlayer.token.image}" alt="Drawing of a ${currentGame.compPlayer.token.name}">
   `
   setTimeout(function() {
-    display(view)
+    display(fighterChoiceView)
     hide(gamePlayView)
     display(changeGameButton)
     currentGame.checkForWinner();
@@ -56,52 +62,57 @@ function renderGamePlay(game, view) {
   }, 2000);
 }
 
+function renderGameView(num) {
+  fighterChoiceView.innerHTML = "";
+  for (var i = 0; i < num; i++) {
+    fighterChoiceView.innerHTML +=
+      `
+      <img id="${currentGame.gameData[i].name}" class="icon" src="${currentGame.gameData[i].image}" alt="Drawing of a ${currentGame.gameData[i].name}">
+      `
+    }
+}
+
 function renderPlayerData() {
-  setLocalStorage();
-  if (!currentGame.humanPlayer.wins && !currentGame.compPlayer.wins) {
-    alienData.innerText = `Wins: 0`
-    computerData.innerText = `Wins: 0`
-  } else if (!currentGame.compPlayer.wins) {
-    computerData.innerText = `Wins: 0`
-    alienData.innerText = `Wins: ${currentGame.humanPlayer.wins}`
-  } else if (!currentGame.humanPlayer.wins) {
-    alienData.innerText = `Wins: 0`
-    computerData.innerText = `Wins: ${currentGame.compPlayer.wins}`
-  } else {
     alienData.innerText = `Wins: ${currentGame.humanPlayer.wins}`
     computerData.innerText = `Wins: ${currentGame.compPlayer.wins}`
- }
+    setLocalStorage();
 }
 
+// Local Storage Functions
 function setLocalStorage() {
-    currentGame.humanPlayer.saveWinsToStorage();
-    currentGame.compPlayer.saveWinsToStorage();
+  currentGame.humanPlayer.saveWinsToStorage();
+  currentGame.compPlayer.saveWinsToStorage();
 }
 
-function renderHeaderText(word) {
-  return headerText.innerText = `Choose Your ${word}!`
+function getLocalStorage() {
+  var humanWins = currentGame.humanPlayer.retrieveWinsFromStorage();
+  var compWins = currentGame.compPlayer.retrieveWinsFromStorage();
+  currentGame.humanPlayer.wins = humanWins;
+  currentGame.compPlayer.wins = compWins;
 }
 
+//Data Model Functions
 function instantiateNewGame() {
-    human = new Player("human");
-    computer = new Player();
-    currentGame = new Game(human, computer);
-    var humanWins = currentGame.humanPlayer.retrieveWinsFromStorage();
-    var compWins = currentGame.compPlayer.retrieveWinsFromStorage();
-    currentGame.humanPlayer.wins = humanWins;
-    currentGame.compPlayer.wins = compWins;
-    renderPlayerData();
+  var human = new Player("human");
+  var computer = new Player();
+  currentGame = new Game(human, computer);
+  getLocalStorage();
+  renderPlayerData();
 }
 
-function setGameType() {
+function setGameType(event) {
   hide(gameChoice);
   renderHeaderText("Fighter");
   if (event.target.closest("#classicCard")) {
-    display(classicFighters);
+    fighterChoiceView.classList.remove("difficult-fighters");
+    renderGameView(3)
+    display(fighterChoiceView);
     currentGame.gameType = "classic";
     return
-  } else {
-    display(difficultFighters);
+  } else if (event.target.closest("#difficultCard")){
+    fighterChoiceView.classList.add("difficult-fighters");
+    renderGameView(5)
+    display(fighterChoiceView);
     currentGame.gameType = "difficult";
     return
   }
@@ -109,44 +120,27 @@ function setGameType() {
 
 function reserveFighterChoice(event) {
   currentGame.determineCompChoice();
-  if (event.target.closest("#rockIconClassic")) {
+  if (event.target.closest("#rock")) {
     currentGame.humanPlayer.takeTurn(currentGame.gameData[0]);
-    hide(headerText);
-    renderGamePlay(currentGame, classicFighters);
-  } else if (event.target.closest("#paperIconClassic")) {
+    renderGamePlay();
+  } else if (event.target.closest("#paper")) {
     currentGame.humanPlayer.takeTurn(currentGame.gameData[1]);
-    hide(headerText);
-    renderGamePlay(currentGame, classicFighters);
-  } else if (event.target.closest("#scissorsIconClassic")) {
+    renderGamePlay();
+  } else if (event.target.closest("#scissors")) {
     currentGame.humanPlayer.takeTurn(currentGame.gameData[2]);
-    hide(headerText);
-    renderGamePlay(currentGame, classicFighters);
-  } else if (event.target.closest("#rockIconDiff")) {
-    currentGame.humanPlayer.takeTurn(currentGame.gameData[0]);
-    hide(headerText);
-    renderGamePlay(currentGame, difficultFighters);
-  } else if (event.target.closest("#paperIconDiff")) {
-    currentGame.humanPlayer.takeTurn(currentGame.gameData[1]);
-    hide(headerText);
-    renderGamePlay(currentGame, difficultFighters);
-  } else if (event.target.closest("#scissorsIconDiff")) {
-    currentGame.humanPlayer.takeTurn(currentGame.gameData[2]);
-    hide(headerText);
-    renderGamePlay(currentGame, difficultFighters);
-  } else if (event.target.closest("#alienIconDiff")) {
+    renderGamePlay();
+  } else if (event.target.closest("#alien")) {
     currentGame.humanPlayer.takeTurn(currentGame.gameData[3]);
-    hide(headerText);
-    renderGamePlay(currentGame, difficultFighters);
-  } else if (event.target.closest("#computerIconDiff")) {
+    renderGamePlay();
+  } else if (event.target.closest("#computer")) {
     currentGame.humanPlayer.takeTurn(currentGame.gameData[4]);
-    hide(headerText);
-    renderGamePlay(currentGame, difficultFighters);
+    renderGamePlay();
   }
 }
 
+//Redirecting Function
 function returnHome() {
-  hide(classicFighters);
-  hide(difficultFighters);
+  hide(fighterChoiceView);
   display(gameChoice);
   display(headerText);
   hide(changeGameButton);
