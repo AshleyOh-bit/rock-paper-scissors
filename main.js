@@ -102,28 +102,28 @@ function getLocalStorage() {
 }
 
 function instantiateNewGame() {
-    human = new Player("human");
-    computer = new Player();
-    currentGame = new Game(human, computer);
-    getLocalStorage();
-    setLocalStorage();
-    renderPlayerData();
+  human = new Player("human");
+  computer = new Player();
+  currentGame = new Game(human, computer);
+  getLocalStorage();
+  setLocalStorage();
+  renderPlayerData();
 }
 
 function setGameType(event) {
   hide(gameChoice);
   renderHeaderText("Fighter");
   if (event.target.closest("#classicCard")) {
-    display(fighterChoiceView);
-    currentGame.gameType = "classic";
     fighterChoiceView.classList.remove("difficult-fighters");
     renderGameView(3)
+    display(fighterChoiceView);
+    currentGame.gameType = "classic";
     return
   } else if (event.target.closest("#difficultCard")){
-    display(fighterChoiceView);
-    currentGame.gameType = "difficult";
     fighterChoiceView.classList.add("difficult-fighters");
     renderGameView(5)
+    display(fighterChoiceView);
+    currentGame.gameType = "difficult";
     return
   }
 }
