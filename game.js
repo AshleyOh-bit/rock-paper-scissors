@@ -10,6 +10,14 @@ class Game {
                      {name:"scissors", image: "./assets/black-and-white-scissors.png"},
                      {name: "alien", image: "./assets/black-and-white-alien.png"},
                      {name: "computer", image: "./assets/laptop-computer2.jpeg"}]
+
+    // this.winConditions = {
+    //   rock: ["scissors", "computer"],
+    //   paper: ["rock", "computer"],
+    //   scissors: ["paper", "alien"],
+    //   alien: ["rock", "paper"],
+    //   computer: ["alien", "scissors"]
+    // }
     }
 
     resetGame() {
