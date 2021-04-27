@@ -23,7 +23,8 @@ var headerText = document.querySelector("#headerText");
 // Event listeners
 changeGameButton.addEventListener("click", returnHome);
 classicFighters.addEventListener("click", reserveFighterChoice);
-difficultFighters.addEventListener("click", reserveFighterChoice);
+difficultFighters.addEventListener("click", function() {
+  reserveFighterChoice(event)});
 gameChoice.addEventListener("click", setGameType);
 window.addEventListener("load", instantiateNewGame);
 
@@ -74,7 +75,7 @@ function renderPlayerData() {
   } else {
     alienData.innerText = `Wins: ${currentGame.humanPlayer.wins}`
     computerData.innerText = `Wins: ${currentGame.compPlayer.wins}`
-  }
+ }
 }
 
 function setLocalStorage() {
@@ -90,6 +91,7 @@ function instantiateNewGame() {
     human = new Player("human");
     computer = new Player();
     currentGame = new Game(human, computer);
+    //setLocalStorage();
     var humanWins = currentGame.humanPlayer.retrieveWinsFromStorage();
     var compWins = currentGame.compPlayer.retrieveWinsFromStorage();
     currentGame.humanPlayer.wins = humanWins;
@@ -111,7 +113,7 @@ function setGameType() {
   }
 }
 
-function reserveFighterChoice() {
+function reserveFighterChoice(event) {
   currentGame.determineCompChoice();
   if (event.target.closest("#rockIconClassic")) {
     currentGame.humanPlayer.takeTurn(currentGame.gameData[0]);
