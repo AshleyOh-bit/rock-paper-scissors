@@ -42,6 +42,16 @@ function renderHeaderText(word) {
   return headerText.innerText = `Choose Your ${word}!`
 }
 
+function renderGameView(gameType, num) {
+  console.log("here")
+  for (var i = 0; i < num; i++) {
+    gameType.innerHTML +=
+      `
+      <img id="${currentGame.gameData[i].name}" class="icon" src="${currentGame.gameData[i].image}" alt="Drawing of a ${currentGame.gameData[i].name}">
+      `
+    }
+}
+
 function renderGamePlay(game, view) {
   hide(view);
   hide(changeGameButton);
@@ -103,6 +113,7 @@ function setGameType() {
   if (event.target.closest("#classicCard")) {
     display(classicFighters);
     currentGame.gameType = "classic";
+    renderGameView(classicFighters, 3)
     return
   } else {
     display(difficultFighters);
@@ -113,7 +124,7 @@ function setGameType() {
 
 function reserveFighterChoice(event) {
   currentGame.determineCompChoice();
-  if (event.target.closest("#rockIconClassic")) {
+  if (event.target.closest("#rock")) {
     currentGame.humanPlayer.takeTurn(currentGame.gameData[0]);
     hide(headerText);
     renderGamePlay(currentGame, classicFighters);
