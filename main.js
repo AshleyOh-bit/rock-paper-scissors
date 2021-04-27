@@ -73,20 +73,9 @@ function renderGameView(num) {
 }
 
 function renderPlayerData() {
-  // setLocalStorage();
-  if (!currentGame.humanPlayer.wins && !currentGame.compPlayer.wins) {
-    alienData.innerText = `Wins: 0`
-    computerData.innerText = `Wins: 0`
-  } else if (!currentGame.compPlayer.wins) {
-    computerData.innerText = `Wins: 0`
-    alienData.innerText = `Wins: ${currentGame.humanPlayer.wins}`
-  } else if (!currentGame.humanPlayer.wins) {
-    alienData.innerText = `Wins: 0`
-    computerData.innerText = `Wins: ${currentGame.compPlayer.wins}`
-  } else {
     alienData.innerText = `Wins: ${currentGame.humanPlayer.wins}`
     computerData.innerText = `Wins: ${currentGame.compPlayer.wins}`
- }
+    setLocalStorage();
 }
 
 function setLocalStorage() {
@@ -102,11 +91,10 @@ function getLocalStorage() {
 }
 
 function instantiateNewGame() {
-  human = new Player("human");
-  computer = new Player();
+  var human = new Player("human");
+  var computer = new Player();
   currentGame = new Game(human, computer);
   getLocalStorage();
-  setLocalStorage();
   renderPlayerData();
 }
 
