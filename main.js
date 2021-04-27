@@ -73,7 +73,7 @@ function renderGameView(num) {
 }
 
 function renderPlayerData() {
-  setLocalStorage();
+  // setLocalStorage();
   if (!currentGame.humanPlayer.wins && !currentGame.compPlayer.wins) {
     alienData.innerText = `Wins: 0`
     computerData.innerText = `Wins: 0`
@@ -90,8 +90,8 @@ function renderPlayerData() {
 }
 
 function setLocalStorage() {
-    currentGame.humanPlayer.saveWinsToStorage();
-    currentGame.compPlayer.saveWinsToStorage();
+  currentGame.humanPlayer.saveWinsToStorage();
+  currentGame.compPlayer.saveWinsToStorage();
 }
 
 function getLocalStorage() {
@@ -106,6 +106,7 @@ function instantiateNewGame() {
     computer = new Player();
     currentGame = new Game(human, computer);
     getLocalStorage();
+    setLocalStorage();
     renderPlayerData();
 }
 
