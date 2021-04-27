@@ -1,8 +1,8 @@
 class Player {
-  constructor(name, token, wins) {
+  constructor(name) {
     this.name = name || "computer";
-    this.token = token || false;
-    this.wins = wins || 0;
+    this.token = "";
+    this.wins = 0;
   }
 
   saveWinsToStorage() {
@@ -11,17 +11,6 @@ class Player {
   }
 
   retrieveWinsFromStorage() {
-     //return localStorage.getItem(JSON.parse(this.name))
-     // var wins;
-     // if (this.wins === null) {
-     //   this.wins = 0;
-     // } else {
-     //   wins = JSON.parse(localStorage.getItem(this.name))
-     //   return this.wins = wins;
-     // }
-       // wins = JSON.parse(localStorage.getItem(this.name))
-       // return this.wins = wins;
-
      return JSON.parse(localStorage.getItem(this.name))
    }
 
