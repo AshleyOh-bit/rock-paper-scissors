@@ -12,15 +12,10 @@ class Game {
                      {name: "computer", image: "./assets/laptop-computer2.jpeg"}]
 
     this.winConditions = {
-                      //rock beats scissors and computer
                        rock: ["scissors", "computer"],
-                       //paper beats rock and computer
                        paper: ["rock", "computer"],
-                       //scissors beats paper and alien
                        scissors: ["paper", "alien"],
-                       //alien beats rock and paper
                        alien: ["rock", "paper"],
-                       //computer beats alien and scissors
                        computer: ["alien", "scissors"]
                      }
     }
@@ -28,11 +23,6 @@ class Game {
     resetGame() {
       this.gameType = "";
       this.winner = "";
-      this.humanPlayer.name = "";
-      this.compPlayer.name = "";
-      this.humanPlayer.wins = 0;
-      this.compPlayer.wins = 0;
-       //localStorage.clear();
       }
 
     getRandomIndex(num){
@@ -50,12 +40,6 @@ class Game {
       }
     }
 
-    //rock beats scissors and computer
-    //paper beats rock and computer
-    //scissors beats paper and alien
-    //alien beats rock and paper
-    //computer beats alien and scissors
-
   checkForWinner() {
     var winner;
     if (this.humanPlayer.token === this.compPlayer.token) {
@@ -67,65 +51,6 @@ class Game {
       this.compPlayer.wins++;
       return this.winner = this.compPlayer.name;
     }
-}
+  }
 
-    // checkForWinner() {
-    //   //check for a tie first
-    //     if (this.humanPlayer.token === this.compPlayer.token) {
-    //       return this.winner = false;
-    //   //check if the human player wins
-    //     } else if (this.humanPlayer.token.name === "rock" &&
-    //               ((this.compPlayer.token.name === "scissors") ||
-    //               (this.compPlayer.token.name === "computer"))) {
-    //                 this.humanPlayer.wins++;
-    //                 return this.winner = this.humanPlayer.name;
-    //     } else if (this.humanPlayer.token.name === "paper" &&
-    //               ((this.compPlayer.token.name === "rock") ||
-    //               (this.compPlayer.token.name === "computer"))) {
-    //                 this.humanPlayer.wins++;
-    //                 return this.winner = this.humanPlayer.name;
-    //     } else if (this.humanPlayer.token.name === "scissors" &&
-    //               ((this.compPlayer.token.name === "paper") ||
-    //               (this.compPlayer.token.name === "alien"))) {
-    //                 this.humanPlayer.wins++;
-    //                 return this.winner = this.humanPlayer.name;
-    //     } else if (this.humanPlayer.token.name === "alien" &&
-    //               ((this.compPlayer.token.name === "paper") ||
-    //               (this.compPlayer.token.name === "rock"))) {
-    //                 this.humanPlayer.wins++;
-    //                 return this.winner = this.humanPlayer.name;
-    //     } else if (this.humanPlayer.token.name === "computer" &&
-    //               ((this.compPlayer.token.name === "alien") ||
-    //               (this.compPlayer.token.name === "scissors"))) {
-    //                 this.humanPlayer.wins++;
-    //                 return this.winner = this.humanPlayer.name;
-    //       //check if computer wins
-    //     } else if (this.compPlayer.token.name === "rock" &&
-    //               (this.humanPlayer.token.name === "scissors") ||
-    //               (this.humanPlayer.token.name === "computer")) {
-    //                 this.compPlayer.wins++;
-    //                 return this.winner = this.compPlayer.name;
-    //       } else if (this.compPlayer.token.name === "paper" &&
-    //                 (this.humanPlayer.token.name === "rock") ||
-    //                 (this.humanPlayer.token.name === "computer")) {
-    //                   this.compPlayer.wins++;
-    //                   return this.winner = this.compPlayer.name;
-    //       } else if (this.compPlayer.token.name === "scissors" &&
-    //                 (this.humanPlayer.token.name === "paper") ||
-    //                 (this.humanPlayer.token.name === "alien")) {
-    //                   this.compPlayer.wins++;
-    //                   return this.winner = this.compPlayer.name;
-    //       } else if (this.compPlayer.token.name === "alien" &&
-    //                 (this.humanPlayer.token.name === "rock") ||
-    //                 (this.humanPlayer.token.name === "paper")) {
-    //                   this.compPlayer.wins++;
-    //                   return this.winner = this.compPlayer.name;
-    //       } else if (this.compPlayer.token.name === "computer" &&
-    //                 (this.humanPlayer.token.name === "alien") ||
-    //                 (this.humanPlayer.token.name === "scissors")) {
-    //                   this.compPlayer.wins++;
-    //                   return this.winner = this.compPlayer.name;
-    //       }
-    //
-    //     }
 }
