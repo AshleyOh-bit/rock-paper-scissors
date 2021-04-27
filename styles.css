@@ -6,9 +6,9 @@ html {
 
 body {
   border-radius: 10px;
-  height: 100%;
-  font-family: "Roboto", sans-serif;
   color: rgb(11, 21, 20);
+  font-family: "Roboto", sans-serif;
+  height: 100%;
 }
 
 header {
@@ -26,23 +26,23 @@ h1, h2, h4 {
 }
 
 main {
+  align-items: center;
   display: flex;
+  height: 100%;
   justify-content: space-around;
   width: 100%;
-  height: 100%;
-  align-items: center;
 }
 
 section {
-  height: 60%;
-  width: 15%;
-  border-radius: 30%;
+  align-items: center;
   background-color: rgba(198, 249, 249, .95);
-  text-align: center;
+  border-radius: 30%;
   display: flex;
   flex-direction: column;
+  height: 60%;
   justify-content: center;
-  align-items: center;
+  text-align: center;
+  width: 15%;
 }
 
 ul {
@@ -56,21 +56,21 @@ li {
 }
 
 img {
-  margin: 3%;
-  border: white solid 2px;
-  border-radius: 3%;
   background-color: rgba(255, 255, 255, .80);
-  height: 30%;
+  border-radius: 3%;
+  border: white solid 2px;
   flex-shrink: 1;
+  height: 30%;
+  margin: 3%;
 }
 
 button {
-  border: rgb(144, 250, 194) solid 2px;
-  border-radius: 5%;
   background-color: rgb(81, 173, 189);
+  border-radius: 5%;
+  border: rgb(144, 250, 194) solid 2px;
   height: 50px;
-  width: 120px;
   margin: 3%;
+  width: 120px;
 }
 
 .emoji {
@@ -82,19 +82,19 @@ button {
 }
 
 .game-board {
+  align-items: center;
   display: flex;
   justify-content: baseline;
-  align-items: center;
   width: 40%;
 }
 
 .view {
+  align-items: center;
   display: flex;
   flex-direction: column;
-  justify-content: space-around;
-  align-items: center;
-  width: 70%;
   height: 70%;
+  justify-content: space-around;
+  width: 70%;
 }
 
 .difficult-fighters {
@@ -102,13 +102,13 @@ button {
 }
 
 .card {
-  margin: 4%;
-  border: white solid 2px;
-  border-radius: 3%;
   background-color: rgba(255, 255, 255, .80);
-  width: 100%;
-  height: 50%;
+  border-radius: 3%;
+  border: white solid 2px;
   flex-shrink: 1;
+  height: 50%;
+  margin: 4%;
+  width: 100%;
 }
 
 .icon:hover {
