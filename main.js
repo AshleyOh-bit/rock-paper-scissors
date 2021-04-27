@@ -53,7 +53,6 @@ function renderGameView(gameView, num) {
 
 function renderGamePlay(game, view) {
   hide(view);
-  //console.log(game.humanPlayer.token.image)
   hide(changeGameButton);
   display(gamePlayView);
   gamePlayView.innerHTML =
@@ -151,7 +150,6 @@ function reserveFighterChoice(event) {
 }
 
 function returnHome() {
-  console.log(currentGame)
   hide(fighterChoiceView);
   display(gameChoice);
   display(headerText);
