@@ -31,16 +31,11 @@ window.addEventListener("load", instantiateNewGame);
 
 // Event Handlers
 function hide(element) {
-  if (element === changeGameButton) {
-    element.classList.add("invisible")
-  } else {
     element.classList.add("hidden");
-  }
 }
 
 function display(element) {
   element.classList.remove("hidden");
-  element.classList.remove("invisible");
 }
 
 function renderGamePlay(game, view) {
@@ -58,7 +53,7 @@ function renderGamePlay(game, view) {
     display(changeGameButton)
     currentGame.checkForWinner();
     renderPlayerData();
-  }, 3000);
+  }, 2000);
 }
 
 function renderPlayerData() {
@@ -91,7 +86,6 @@ function instantiateNewGame() {
     human = new Player("human");
     computer = new Player();
     currentGame = new Game(human, computer);
-    //setLocalStorage();
     var humanWins = currentGame.humanPlayer.retrieveWinsFromStorage();
     var compWins = currentGame.compPlayer.retrieveWinsFromStorage();
     currentGame.humanPlayer.wins = humanWins;
@@ -117,27 +111,35 @@ function reserveFighterChoice(event) {
   currentGame.determineCompChoice();
   if (event.target.closest("#rockIconClassic")) {
     currentGame.humanPlayer.takeTurn(currentGame.gameData[0]);
+    hide(headerText);
     renderGamePlay(currentGame, classicFighters);
   } else if (event.target.closest("#paperIconClassic")) {
     currentGame.humanPlayer.takeTurn(currentGame.gameData[1]);
+    hide(headerText);
     renderGamePlay(currentGame, classicFighters);
   } else if (event.target.closest("#scissorsIconClassic")) {
     currentGame.humanPlayer.takeTurn(currentGame.gameData[2]);
+    hide(headerText);
     renderGamePlay(currentGame, classicFighters);
   } else if (event.target.closest("#rockIconDiff")) {
     currentGame.humanPlayer.takeTurn(currentGame.gameData[0]);
+    hide(headerText);
     renderGamePlay(currentGame, difficultFighters);
   } else if (event.target.closest("#paperIconDiff")) {
     currentGame.humanPlayer.takeTurn(currentGame.gameData[1]);
+    hide(headerText);
     renderGamePlay(currentGame, difficultFighters);
   } else if (event.target.closest("#scissorsIconDiff")) {
     currentGame.humanPlayer.takeTurn(currentGame.gameData[2]);
+    hide(headerText);
     renderGamePlay(currentGame, difficultFighters);
   } else if (event.target.closest("#alienIconDiff")) {
     currentGame.humanPlayer.takeTurn(currentGame.gameData[3]);
+    hide(headerText);
     renderGamePlay(currentGame, difficultFighters);
   } else if (event.target.closest("#computerIconDiff")) {
     currentGame.humanPlayer.takeTurn(currentGame.gameData[4]);
+    hide(headerText);
     renderGamePlay(currentGame, difficultFighters);
   }
 }
@@ -146,6 +148,7 @@ function returnHome() {
   hide(classicFighters);
   hide(difficultFighters);
   display(gameChoice);
+  display(headerText);
   hide(changeGameButton);
   currentGame.resetGame();
   renderPlayerData();

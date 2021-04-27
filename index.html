@@ -2,70 +2,66 @@
 <html lang="en">
   <head>
     <title>Rock Paper Scissors</title>
-    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="./styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@700&display=swap" rel="stylesheet">
     <meta content="text/html;charset=utf-8" http-equiv="Content-Type">
     <meta content="utf-8" http-equiv="encoding">
   </head>
   <body>
     <header>
-      <h1>Rock, Paper, Scissors</h1>
-      <h2 id="headerText">Choose Your Game!</h2>
+      <h1>Rock / Paper / Scissors</h1>
     </header>
     <main>
       <section>
-        <div class="wins-display">
-          <p>👽</p>
+        <div class="player-info">
+          <h2 class="emoji">👽</h2>
           <h3>Alien</h3>
-          <p id="alienWins">Wins: 0</p>
+          <h4 id="alienWins" class="wins-text">Wins: 0</h4>
         </div>
       </section>
-
       <section class="game-board">
-        <button id="changeGame" class="invisible">Change game?</button>
-        <div id="gameChoice" class="game-choice view">
-          <!-- <div> -->
-            <div id="classicCard" class="classic card">
-              <h4 class="game-type">classic</h4>
-              <ul>
-                <li>rock > scissors</li>
-                <li>paper > rock</li>
-                <li>scissors > paper</li>
-              </ul>
-            </div>
-            <div id="difficultCard" class="difficult card">
-              <h4 class="game-type">difficult</h4>
-              <ul>
-                <li>rock > scissors & alien</li>
-                <li>scissors > paper & blob</li>
-                <li>paper > rock & alien</li>
-                <li>alien > scissors & paper</li>
-                <li>blob > rock & alien</li>
-              </ul>
-           </div>
-          <!-- </div> -->
+        <button id="changeGame" class="hidden">Change game?</button>
+        <h2 id="headerText">Choose Your Game!</h2>
+        <div id="gameChoice" class="view">
+          <div id="classicCard" class="card">
+            <h4>classic</h4>
+            <ul>
+              <li>rock > scissors</li>
+              <li>paper > rock</li>
+              <li>scissors > paper</li>
+            </ul>
+          </div>
+          <div class="card">
+          <h4>difficult</h4>
+            <ul>
+              <li>rock > scissors & computer</li>
+              <li>paper > rock & computer</li>
+              <li>scissors > paper & alien</li>
+              <li>alien > rock & paper</li>
+              <li>computer > alien & scissors</li>
+            </ul>
+          </div>
         </div>
-        <div id="classicFighters" class="classic-fighters view hidden">
-            <img id="rockIconClassic" class="icon" src= "./assets/black-and-white-rocks.png" alt="Rock icon"/><span class="hidden">👽</span>
-            <img id="paperIconClassic" class="icon" src= "./assets/black-and-white-paper.png" alt="Paper icon"/>
-            <img id="scissorsIconClassic" class="icon" src= "./assets/black-and-white-scissors.png" alt="Scissors icon"/>
+        <div id="classicFighters" class="view hidden">
+          <img id="rockIconClassic" class="icon" src= "./assets/black-and-white-rocks.png" alt="Rock icon"/>
+          <img id="paperIconClassic" class="icon" src= "./assets/black-and-white-paper.png" alt="Paper icon"/>
+          <img id="scissorsIconClassic" class="icon" src= "./assets/black-and-white-scissors.png" alt="Scissors icon"/>
         </div>
         <div id="difficultFighters" class="difficult-fighters view hidden">
-            <img id="rockIconDiff" class="icon" src= "./assets/black-and-white-rocks.png" alt="Rock icon"/>
-            <img id="paperIconDiff" class="icon" src= "./assets/black-and-white-paper.png" alt="Paper icon"/>
-            <img id="scissorsIconDiff" class="icon" src= "./assets/black-and-white-scissors.png" alt="Scissors icon"/>
-            <img id="alienIconDiff" class="icon" src= "./assets/black-and-white-alien.png" alt="Alien icon"/>
-            <img id="computerIconDiff" class="icon" src= "./assets/laptop-computer2.jpeg" alt="Computer icon"/>
+          <img id="rockIconDiff" class="icon" src= "./assets/black-and-white-rocks.png" alt="Rock icon"/>
+          <img id="paperIconDiff" class="icon" src= "./assets/black-and-white-paper.png" alt="Paper icon"/>
+          <img id="scissorsIconDiff" class="icon" src= "./assets/black-and-white-scissors.png" alt="Scissors icon"/>
+          <img id="alienIconDiff" class="icon" src= "./assets/black-and-white-alien.png" alt="Alien icon"/>
+          <img id="computerIconDiff" class="icon" src= "./assets/laptop.png" alt="Computer icon"/>
         </div>
         <div id="gamePlay" class="game-play view hidden">
         </div>
       </section>
-
       <section>
-        <div class="wins-display">
-          <p> 🖥 </p>
+        <div class="player-info">
+          <h2 class="emoji">💻</h2>
           <h3>Computer</h3>
-          <p id="computerWins">Wins: 0</p>
+          <h4 id="computerWins" class="wins-text">Wins: 0</h4>
         </div>
       </section>
     </main>

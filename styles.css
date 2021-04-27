@@ -1,75 +1,75 @@
-*{
-  border: blue solid 1px;
-}
-
 html {
-  background-image: url(https://fsa.zobj.net/crop.php?r=iJ00lmIuvw1l2Fl87KLiXZdUf0KnpNtBtshpE7YdVy58b_zvwDr1exAh0bqvpjpxslCrtktNVcAQLPG4gIE2mrzqo8OcVCx_cbOyVeZyXpUn1AG8_lkDDVjljkaFcR7dxgm3q5A9wWZNklhb);
+  background-image: url(./assets/tropical-planet.jpg);
   height: 100%;
   width: 100%;
 }
 
 body {
   border-radius: 10px;
-  height: 100%;
-  font-family: "Roboto", sans-serif;
   color: rgb(11, 21, 20);
+  font-family: "Roboto", sans-serif;
+  height: 100%;
 }
 
 header {
-  /* background-color: rgba(18, 99, 116, .9); */
-  background-color: rgb(81, 173, 189);
-  width: 100%;
-  height: 15%;
-  text-align: center;
-  border-radius: 10%;
+  align-items: center;
   color: rgb(255, 255, 255);
-  /* border: white solid 2px; */
-  /* box-shadow: 2px 2px white; */
-  /* margin-top: 2%;
-  margin-bottom: 2%; */
+  display: flex;
+  height: 15%;
+  justify-content: center;
+  text-align: center;
+  width: 100%;
 }
 
 h1, h2, h4 {
+  font-style: italic;
   margin: 1%;
   padding: 0%;
+  text-transform: uppercase;
 }
 
-/* h2 {
-  margin: 0%;
-  padding: 0%;
-} */
+h1 {
+  font-size: 75px;
+}
 
-/* h4 {
-  padding: 1%;
-} */
+h2 {
+  margin-bottom: 8%;
+}
+
+h3 {
+  font-size: 35px;
+}
+
+h4 {
+  margin-top: 4%;
+}
 
 main {
+  align-items: center;
   display: flex;
+  height: 100%;
   justify-content: space-around;
   width: 100%;
-  height: 100%;
-  align-items: center;
 }
 
-
 section {
-  height: 60%;
-  width: 15%;
-  border-radius: 30%;
+  align-items: center;
   background-color: rgba(198, 249, 249, .95);
-  text-align: center;
+  border-radius: 30%;
+  border: rgb(255, 255, 255) solid 2px;
   display: flex;
   flex-direction: column;
+  height: 70%;
   justify-content: center;
-  align-items: center;
+  margin-bottom: 10%;
+  text-align: center;
+  width: 15%;
 }
 
 ul {
-  list-style: disc;
-  padding-left: 10%;
-  text-align: left;
-  /* padding-top: 2%;
-  padding-bottom: 2%; */
+  list-style: none;
+  padding: 0;
+  text-align: center;
 }
 
 li {
@@ -77,85 +77,77 @@ li {
 }
 
 img {
-  margin: 3%;
-  border: white solid 2px;
-  border-radius: 3%;
   background-color: rgba(255, 255, 255, .80);
-  /* width: 100%; */
+  border-radius: 3%;
+  border: white solid 2px;
   height: 30%;
-  flex-shrink: 1;
+  margin: 3%;
 }
 
 button {
-  border: rgb(144, 250, 194) solid 2px;
-  border-radius: 5%;
-  background-color: rgb(81, 173, 189);
+  background-color: rgba(198, 249, 249, .30);
+  border-radius: 5px;
+  border: rgb(255, 255, 255) solid 2px;
+  font-size: 15px;
+  font-style: italic;
   height: 50px;
-  width: 120px;
-  margin: 3%;
-  /* visibility: hidden; */
-  /* padding: 10px; */
+  margin: 0;
+  margin-bottom: 5%;
+  text-transform: uppercase;
+  width: 30%;
 }
-/*
-section.egg {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-} */
 
-.wins-display {
-  font-size: 20px;
+.player-info {
+  width: 80%;
+}
+
+.emoji {
+  font-size: 75px;
+  font-style: normal;
+}
+
+.wins-text {
+  font-size: 30px;
+  font-style: normal;
+  text-transform: lowercase;
 }
 
 .game-board {
-  display: flex;
-  justify-content: baseline;
   align-items: center;
+  display: flex;
   width: 40%;
-  /* height: 100px; */
 }
 
 .view {
+  align-items: center;
   display: flex;
   flex-direction: column;
-  justify-content: space-around;
-  align-items: center;
-  width: 70%;
   height: 70%;
-  /* flex-wrap: wrap; */
+  justify-content: space-around;
+  width: 70%;
 }
 
 .difficult-fighters {
+  flex-direction: row;
   flex-wrap: wrap;
 }
 
 .card {
-  margin: 4%;
-  border: white solid 2px;
-  border-radius: 3%;
   background-color: rgba(255, 255, 255, .80);
-  width: 100%;
-  height: 50%;
-  flex-shrink: 1;
+  border-radius: 3%;
+  border: white solid 2px;
+  height: 35%;
+  margin: 4%;
+  width: 75%;
 }
 
-.icon:hover {
-  background-color: rgb(144, 250, 194);
-  cursor: pointer;
+.game-play {
+  flex-direction: row;
 }
 
-/* img:hover {
+button:hover, .card:hover, .icon:hover {
   background-color: rgb(144, 250, 194);
   cursor: pointer;
-} */
-
-.card:hover {
-  background-color: rgb(144, 250, 194);
-  cursor: pointer;
-}
-
-.invisible {
-  visibility: hidden;
 }
 
 .hidden {

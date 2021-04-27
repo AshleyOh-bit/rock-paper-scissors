@@ -9,7 +9,7 @@ class Game {
                      {name: "paper", image: "./assets/black-and-white-paper.png"},
                      {name:"scissors", image: "./assets/black-and-white-scissors.png"},
                      {name: "alien", image: "./assets/black-and-white-alien.png"},
-                     {name: "computer", image: "./assets/laptop-computer2.jpeg"}]
+                     {name: "computer", image: "./assets/laptop.png"}]
 
     this.winConditions = {
                        rock: ["scissors", "computer"],
