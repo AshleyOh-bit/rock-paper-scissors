@@ -9,6 +9,8 @@ var difficultFighters = document.querySelector("#difficultFighters");
 var gameChoice = document.querySelector("#gameChoice");
 var gamePlayView = document.querySelector("#gamePlay");
 
+var fighterChoiceView = document.querySelector("#fighterChoice");
+
 // Button
 var changeGameButton = document.querySelector("#changeGame");
 
@@ -22,9 +24,11 @@ var headerText = document.querySelector("#headerText");
 
 // Event listeners
 changeGameButton.addEventListener("click", returnHome);
-classicFighters.addEventListener("click", reserveFighterChoice);
-difficultFighters.addEventListener("click", function() {
-  reserveFighterChoice(event)});
+fighterChoiceView.addEventListener("click", reserveFighterChoice);
+//classicFighters.addEventListener("click", reserveFighterChoice);
+//difficultFighters.addEventListener("click", function() {
+  //reserveFighterChoice(event)
+//});
 gameChoice.addEventListener("click", setGameType);
 window.addEventListener("load", instantiateNewGame);
 
@@ -42,10 +46,10 @@ function renderHeaderText(word) {
   return headerText.innerText = `Choose Your ${word}!`
 }
 
-function renderGameView(gameType, num) {
-  console.log("here")
+function renderGameView(gameView, num) {
+  gameView.innerHTML = "";
   for (var i = 0; i < num; i++) {
-    gameType.innerHTML +=
+    gameView.innerHTML +=
       `
       <img id="${currentGame.gameData[i].name}" class="icon" src="${currentGame.gameData[i].image}" alt="Drawing of a ${currentGame.gameData[i].name}">
       `
@@ -54,6 +58,7 @@ function renderGameView(gameType, num) {
 
 function renderGamePlay(game, view) {
   hide(view);
+  //console.log(game.humanPlayer.token.image)
   hide(changeGameButton);
   display(gamePlayView);
   gamePlayView.innerHTML =
@@ -111,13 +116,16 @@ function setGameType() {
   hide(gameChoice);
   renderHeaderText("Fighter");
   if (event.target.closest("#classicCard")) {
-    display(classicFighters);
+    display(fighterChoiceView);
     currentGame.gameType = "classic";
-    renderGameView(classicFighters, 3)
+    fighterChoiceView.classList.remove("difficult-fighters");
+    renderGameView(fighterChoiceView, 3)
     return
-  } else {
-    display(difficultFighters);
+  } else if (event.target.closest("#difficultCard")){
+    display(fighterChoiceView);
     currentGame.gameType = "difficult";
+    fighterChoiceView.classList.add("difficult-fighters");
+    renderGameView(fighterChoiceView, 5)
     return
   }
 }
@@ -127,41 +135,42 @@ function reserveFighterChoice(event) {
   if (event.target.closest("#rock")) {
     currentGame.humanPlayer.takeTurn(currentGame.gameData[0]);
     hide(headerText);
-    renderGamePlay(currentGame, classicFighters);
-  } else if (event.target.closest("#paperIconClassic")) {
+    renderGamePlay(currentGame, fighterChoiceView);
+  } else if (event.target.closest("#paper")) {
     currentGame.humanPlayer.takeTurn(currentGame.gameData[1]);
     hide(headerText);
-    renderGamePlay(currentGame, classicFighters);
-  } else if (event.target.closest("#scissorsIconClassic")) {
+    renderGamePlay(currentGame, fighterChoiceView);
+  } else if (event.target.closest("#scissors")) {
     currentGame.humanPlayer.takeTurn(currentGame.gameData[2]);
     hide(headerText);
-    renderGamePlay(currentGame, classicFighters);
-  } else if (event.target.closest("#rockIconDiff")) {
-    currentGame.humanPlayer.takeTurn(currentGame.gameData[0]);
-    hide(headerText);
-    renderGamePlay(currentGame, difficultFighters);
-  } else if (event.target.closest("#paperIconDiff")) {
-    currentGame.humanPlayer.takeTurn(currentGame.gameData[1]);
-    hide(headerText);
-    renderGamePlay(currentGame, difficultFighters);
-  } else if (event.target.closest("#scissorsIconDiff")) {
-    currentGame.humanPlayer.takeTurn(currentGame.gameData[2]);
-    hide(headerText);
-    renderGamePlay(currentGame, difficultFighters);
-  } else if (event.target.closest("#alienIconDiff")) {
+    renderGamePlay(currentGame, fighterChoiceView);
+  // } else if (event.target.closest("#rockIconDiff")) {
+  //   currentGame.humanPlayer.takeTurn(currentGame.gameData[0]);
+  //   hide(headerText);
+  //   renderGamePlay(currentGame, difficultFighters);
+  // } else if (event.target.closest("#paperIconDiff")) {
+  //   currentGame.humanPlayer.takeTurn(currentGame.gameData[1]);
+  //   hide(headerText);
+  //   renderGamePlay(currentGame, difficultFighters);
+  // } else if (event.target.closest("#scissorsIconDiff")) {
+  //   currentGame.humanPlayer.takeTurn(currentGame.gameData[2]);
+  //   hide(headerText);
+  //   renderGamePlay(currentGame, difficultFighters);
+  } else if (event.target.closest("#alien")) {
     currentGame.humanPlayer.takeTurn(currentGame.gameData[3]);
     hide(headerText);
-    renderGamePlay(currentGame, difficultFighters);
-  } else if (event.target.closest("#computerIconDiff")) {
+    renderGamePlay(currentGame, fighterChoiceView);
+  } else if (event.target.closest("#computer")) {
     currentGame.humanPlayer.takeTurn(currentGame.gameData[4]);
     hide(headerText);
-    renderGamePlay(currentGame, difficultFighters);
+    renderGamePlay(currentGame, fighterChoiceView);
   }
 }
 
 function returnHome() {
-  hide(classicFighters);
-  hide(difficultFighters);
+  // hide(classicFighters);
+  // hide(difficultFighters);
+  hide(fighterChoiceView);
   display(gameChoice);
   display(headerText);
   hide(changeGameButton);
