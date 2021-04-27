@@ -90,12 +90,19 @@ button {
   width: 120px;
 }
 
+.player-info {
+  width: 80%;
+}
+
 .emoji {
   font-size: 75px;
+  font-style: normal;
 }
 
 .wins-text {
-  font-size: 25px;
+  font-size: 30px;
+  font-style: normal;
+  text-transform: lowercase;
 }
 
 .game-board {
