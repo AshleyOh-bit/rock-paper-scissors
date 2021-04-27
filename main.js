@@ -27,12 +27,8 @@ difficultFighters.addEventListener("click", reserveFighterChoice);
 gameChoice.addEventListener("click", setGameType);
 window.addEventListener("load", instantiateNewGame);
 
+
 // Event Handlers
-// function preventDefault() {
-//   event.preventDefault();
-// }
-
-
 function hide(element) {
   if (element === changeGameButton) {
     element.classList.add("invisible")
@@ -64,27 +60,6 @@ function renderGamePlay(game, view) {
   }, 3000);
 }
 
-//Local Storage onload
-// function checkLocalStorage() {
-//   if (!localStorage.getItem("human") || !localStorage.getItem("computer")) {
-//     instantiateNewGame()
-//   }  else {
-//     renderPlayerData();
-//   }
-// }
-
-// function renderWins(humanWins, compWins) {
-//   // var humanWins = currentGame.humanPlayer.retrieveWinsFromStorage();
-//   // var compWins = currentGame.compPlayer.retrieveWinsFromStorage();
-//   // if (!localStorage.getItem("human") || !localStorge.getItem("computer")) {
-//   //   alienData.innerText = `Wins: ${humanWins}`
-//   // }
-//   alienData.innerText = `Wins: ${currentGame.humanPlayer.wins}`
-//   computerData.innerText = `Wins: ${currentGame.compPlayer.wins}`
-//
-// }
-
-
 function renderPlayerData() {
   setLocalStorage();
   if (!currentGame.humanPlayer.wins && !currentGame.compPlayer.wins) {
@@ -93,8 +68,6 @@ function renderPlayerData() {
   } else if (!currentGame.compPlayer.wins) {
     computerData.innerText = `Wins: 0`
     alienData.innerText = `Wins: ${currentGame.humanPlayer.wins}`
-  //   console.log(currentGame.humanPlayer.wins);
-  //   console.log(currentGame.compPlayer.wins);
   } else if (!currentGame.humanPlayer.wins) {
     alienData.innerText = `Wins: 0`
     computerData.innerText = `Wins: ${currentGame.compPlayer.wins}`
@@ -102,9 +75,6 @@ function renderPlayerData() {
     alienData.innerText = `Wins: ${currentGame.humanPlayer.wins}`
     computerData.innerText = `Wins: ${currentGame.compPlayer.wins}`
   }
-    // setLocalStorage();
-    // alienData.innerText = `Wins: ${currentGame.humanPlayer.wins}`
-    // computerData.innerText = `Wins: ${currentGame.compPlayer.wins}`
 }
 
 function setLocalStorage() {
@@ -117,36 +87,17 @@ function renderHeaderText(word) {
 }
 
 function instantiateNewGame() {
-  // if (!currentGame) {
     human = new Player("human");
     computer = new Player();
     currentGame = new Game(human, computer);
-    //setLocalStorage();
     var humanWins = currentGame.humanPlayer.retrieveWinsFromStorage();
     var compWins = currentGame.compPlayer.retrieveWinsFromStorage();
     currentGame.humanPlayer.wins = humanWins;
     currentGame.compPlayer.wins = compWins;
     renderPlayerData();
-  // } else {
-  //   renderPlayerData();
-  // }
-
-  // renderWins(humanWins, compWins);
-  // else {
-  //   currentGame.type = ""
-  // }
 }
 
 function setGameType() {
-  // if (!currentGame) {
-  //   human = new Player("human", "", 0);
-  //   computer = new Player();
-  //   currentGame = new Game(human, computer, "");
-  // }
-  // else {
-  //   currentGame.type = ""
-  // }
-
   hide(gameChoice);
   renderHeaderText("Fighter");
   if (event.target.closest("#classicCard")) {
@@ -171,8 +122,7 @@ function reserveFighterChoice() {
   } else if (event.target.closest("#scissorsIconClassic")) {
     currentGame.humanPlayer.takeTurn(currentGame.gameData[2]);
     renderGamePlay(currentGame, classicFighters);
-  }
-    else if (event.target.closest("#rockIconDiff")) {
+  } else if (event.target.closest("#rockIconDiff")) {
     currentGame.humanPlayer.takeTurn(currentGame.gameData[0]);
     renderGamePlay(currentGame, difficultFighters);
   } else if (event.target.closest("#paperIconDiff")) {
@@ -197,6 +147,5 @@ function returnHome() {
   hide(changeGameButton);
   currentGame.resetGame();
   renderPlayerData();
-  // renderWins();
   renderHeaderText("Game");
 }
