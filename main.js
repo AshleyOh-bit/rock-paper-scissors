@@ -21,17 +21,11 @@ var headerText = document.querySelector("#headerText");
 
 
 // Event listeners
-//window.addEventListener("load", renderWins);
-// window.addEventListener("load", function() {
-//   event.preventDefault();
-// })
-window.addEventListener("load", instantiateNewGame);
-// window.addEventListener("load", checkLocalStorage);
-//window.onload = currentGame.computerPlayer.retrieveWinsFromStorage();
-gameChoice.addEventListener("click", setGameType);
+changeGameButton.addEventListener("click", returnHome);
 classicFighters.addEventListener("click", reserveFighterChoice);
 difficultFighters.addEventListener("click", reserveFighterChoice);
-changeGameButton.addEventListener("click", returnHome)
+gameChoice.addEventListener("click", setGameType);
+window.addEventListener("load", instantiateNewGame);
 
 // Event Handlers
 // function preventDefault() {
