@@ -145,17 +145,7 @@ button {
   flex-direction: row;
 }
 
-.icon:hover {
-  background-color: rgb(144, 250, 194);
-  cursor: pointer;
-}
-
-.card:hover {
-  background-color: rgb(144, 250, 194);
-  cursor: pointer;
-}
-
-button:hover {
+button:hover, .card:hover, .icon:hover {
   background-color: rgb(144, 250, 194);
   cursor: pointer;
 }

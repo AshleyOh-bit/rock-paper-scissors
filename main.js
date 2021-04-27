@@ -53,7 +53,7 @@ function renderGamePlay(game, view) {
     display(changeGameButton)
     currentGame.checkForWinner();
     renderPlayerData();
-  }, 3000);
+  }, 2000);
 }
 
 function renderPlayerData() {
