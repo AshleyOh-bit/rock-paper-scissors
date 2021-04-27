@@ -62,7 +62,7 @@ section {
 }
 
 ul {
-  list-style: disc;
+  list-style: none;
   padding-left: 10%;
   text-align: left;
 }
@@ -75,19 +75,22 @@ img {
   background-color: rgba(255, 255, 255, .80);
   border-radius: 3%;
   border: white solid 2px;
-  flex-shrink: 1;
+  /* flex-shrink: 1; */
   height: 30%;
   margin: 3%;
 }
 
 button {
-  background-color: rgb(81, 173, 189);
-  border-radius: 5%;
-  border: rgb(144, 250, 194) solid 2px;
+  background-color: rgba(198, 249, 249, .30);
+  border-radius: 5px;
+  border: rgb(255, 255, 255) solid 2px;
+  font-size: 15px;
+  font-style: italic;
   height: 50px;
   margin: 0;
   margin-bottom: 5%;
-  width: 120px;
+  text-transform: uppercase;
+  width: 30%;
 }
 
 .player-info {
@@ -129,10 +132,20 @@ button {
   border-radius: 3%;
   border: white solid 2px;
   flex-shrink: 1;
-  height: 50%;
+  height: 35%;
   margin: 4%;
-  width: 100%;
+  width: 75%;
 }
+
+/* .icon-box {
+  height: 50%;
+  width: 30%;
+}
+
+.player-choice {
+  height: 75%;
+  width: 75%;
+} */
 
 .icon:hover {
   background-color: rgb(144, 250, 194);
@@ -140,6 +153,11 @@ button {
 }
 
 .card:hover {
+  background-color: rgb(144, 250, 194);
+  cursor: pointer;
+}
+
+button:hover {
   background-color: rgb(144, 250, 194);
   cursor: pointer;
 }
