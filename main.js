@@ -11,11 +11,11 @@ var gamePlayView = document.querySelector("#gamePlay");
 // Button
 var changeGameButton = document.querySelector("#changeGame");
 
-// On page player data
+// On Page Player Data
 var alienData = document.querySelector("#alienWins");
 var computerData = document.querySelector("#computerWins");
 
-// Text changing
+// Text
 var headerText = document.querySelector("#headerText");
 
 
@@ -78,6 +78,7 @@ function renderPlayerData() {
     setLocalStorage();
 }
 
+// Local Storage Functions
 function setLocalStorage() {
   currentGame.humanPlayer.saveWinsToStorage();
   currentGame.compPlayer.saveWinsToStorage();
@@ -90,6 +91,7 @@ function getLocalStorage() {
   currentGame.compPlayer.wins = compWins;
 }
 
+//Data Model Functions
 function instantiateNewGame() {
   var human = new Player("human");
   var computer = new Player();
@@ -136,6 +138,7 @@ function reserveFighterChoice(event) {
   }
 }
 
+//Redirecting Function
 function returnHome() {
   hide(fighterChoiceView);
   display(gameChoice);
