@@ -137,7 +137,7 @@ function instantiateNewGame() {
   // if (!currentGame) {
     human = new Player("human", "", humanWins);
     computer = new Player("computer", "", compWins);
-    currentGame = new Game(human, computer, "");
+    currentGame = new Game(human, computer);
     //setLocalStorage();
     var humanWins = currentGame.humanPlayer.retrieveWinsFromStorage();
     var compWins = currentGame.compPlayer.retrieveWinsFromStorage();

@@ -1,8 +1,8 @@
 class Game {
-  constructor(humanPlayer, compPlayer, gameType) {
+  constructor(humanPlayer, compPlayer) {
     this.humanPlayer = humanPlayer;
     this.compPlayer = compPlayer;
-    this.gameType = gameType;
+    this.gameType = "";
     this.winner = "";
 
     this.gameData = [{name: "rock", image: "./assets/black-and-white-rocks.png"},
