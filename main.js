@@ -29,6 +29,7 @@ window.addEventListener("load", instantiateNewGame);
 
 
 // Event Handlers
+// Hide/Display Functions
 function hide(element) {
     element.classList.add("hidden");
 }
@@ -37,36 +38,38 @@ function display(element) {
   element.classList.remove("hidden");
 }
 
+// Rendering Functions
 function renderHeaderText(word) {
   return headerText.innerText = `Choose Your ${word}!`
 }
 
-function renderGameView(gameView, num) {
-  gameView.innerHTML = "";
-  for (var i = 0; i < num; i++) {
-    gameView.innerHTML +=
-      `
-      <img id="${currentGame.gameData[i].name}" class="icon" src="${currentGame.gameData[i].image}" alt="Drawing of a ${currentGame.gameData[i].name}">
-      `
-    }
-}
-
-function renderGamePlay(game, view) {
-  hide(view);
+function renderGamePlay() {
+  hide(headerText);
+  hide(fighterChoiceView);
   hide(changeGameButton);
   display(gamePlayView);
   gamePlayView.innerHTML =
   `
-  <img src="${game.humanPlayer.token.image}" alt="Drawing of a ${game.humanPlayer.token.name}">
-  <img src="${game.compPlayer.token.image}" alt="Drawing of a ${game.compPlayer.token.name}">
+  <img src="${currentGame.humanPlayer.token.image}" alt="Drawing of a ${currentGame.humanPlayer.token.name}">
+  <img src="${currentGame.compPlayer.token.image}" alt="Drawing of a ${currentGame.compPlayer.token.name}">
   `
   setTimeout(function() {
-    display(view)
+    display(fighterChoiceView)
     hide(gamePlayView)
     display(changeGameButton)
     currentGame.checkForWinner();
     renderPlayerData();
   }, 2000);
+}
+
+function renderGameView(num) {
+  fighterChoiceView.innerHTML = "";
+  for (var i = 0; i < num; i++) {
+    fighterChoiceView.innerHTML +=
+      `
+      <img id="${currentGame.gameData[i].name}" class="icon" src="${currentGame.gameData[i].image}" alt="Drawing of a ${currentGame.gameData[i].name}">
+      `
+    }
 }
 
 function renderPlayerData() {
@@ -113,13 +116,13 @@ function setGameType(event) {
     display(fighterChoiceView);
     currentGame.gameType = "classic";
     fighterChoiceView.classList.remove("difficult-fighters");
-    renderGameView(fighterChoiceView, 3)
+    renderGameView(3)
     return
   } else if (event.target.closest("#difficultCard")){
     display(fighterChoiceView);
     currentGame.gameType = "difficult";
     fighterChoiceView.classList.add("difficult-fighters");
-    renderGameView(fighterChoiceView, 5)
+    renderGameView(5)
     return
   }
 }
@@ -128,24 +131,19 @@ function reserveFighterChoice(event) {
   currentGame.determineCompChoice();
   if (event.target.closest("#rock")) {
     currentGame.humanPlayer.takeTurn(currentGame.gameData[0]);
-    hide(headerText);
-    renderGamePlay(currentGame, fighterChoiceView);
+    renderGamePlay();
   } else if (event.target.closest("#paper")) {
     currentGame.humanPlayer.takeTurn(currentGame.gameData[1]);
-    hide(headerText);
-    renderGamePlay(currentGame, fighterChoiceView);
+    renderGamePlay();
   } else if (event.target.closest("#scissors")) {
     currentGame.humanPlayer.takeTurn(currentGame.gameData[2]);
-    hide(headerText);
-    renderGamePlay(currentGame, fighterChoiceView);
+    renderGamePlay();
   } else if (event.target.closest("#alien")) {
     currentGame.humanPlayer.takeTurn(currentGame.gameData[3]);
-    hide(headerText);
-    renderGamePlay(currentGame, fighterChoiceView);
+    renderGamePlay();
   } else if (event.target.closest("#computer")) {
     currentGame.humanPlayer.takeTurn(currentGame.gameData[4]);
-    hide(headerText);
-    renderGamePlay(currentGame, fighterChoiceView);
+    renderGamePlay();
   }
 }
 
