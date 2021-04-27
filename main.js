@@ -135,8 +135,8 @@ function renderHeaderText(word) {
 
 function instantiateNewGame() {
   // if (!currentGame) {
-    human = new Player("human", "", humanWins);
-    computer = new Player("computer", "", compWins);
+    human = new Player("human");
+    computer = new Player();
     currentGame = new Game(human, computer);
     //setLocalStorage();
     var humanWins = currentGame.humanPlayer.retrieveWinsFromStorage();
