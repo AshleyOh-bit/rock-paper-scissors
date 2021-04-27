@@ -1,3 +1,7 @@
+* {
+  border: blue solid 1px
+}
+
 html {
   background-image: url(./assets/tropical-planet.jpg);
   height: 100%;
@@ -41,6 +45,7 @@ section {
   flex-direction: column;
   height: 60%;
   justify-content: center;
+  margin-bottom: 10%;
   text-align: center;
   width: 15%;
 }
@@ -84,7 +89,6 @@ button {
 .game-board {
   align-items: center;
   display: flex;
-  justify-content: baseline;
   width: 40%;
 }
 
