@@ -82,13 +82,13 @@ function renderGamePlay(game, view) {
 }
 
 //Local Storage onload
-function checkLocalStorage() {
-  if (!localStorage.getItem("human") || !localStorage.getItem("computer")) {
-    instantiateNewGame()
-  }  else {
-    renderPlayerData();
-  }
-}
+// function checkLocalStorage() {
+//   if (!localStorage.getItem("human") || !localStorage.getItem("computer")) {
+//     instantiateNewGame()
+//   }  else {
+//     renderPlayerData();
+//   }
+// }
 
 // function renderWins(humanWins, compWins) {
 //   // var humanWins = currentGame.humanPlayer.retrieveWinsFromStorage();
