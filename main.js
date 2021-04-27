@@ -82,14 +82,18 @@ function setLocalStorage() {
     currentGame.compPlayer.saveWinsToStorage();
 }
 
+function getLocalStorage() {
+  var humanWins = currentGame.humanPlayer.retrieveWinsFromStorage();
+  var compWins = currentGame.compPlayer.retrieveWinsFromStorage();
+  currentGame.humanPlayer.wins = humanWins;
+  currentGame.compPlayer.wins = compWins;
+}
+
 function instantiateNewGame() {
     human = new Player("human");
     computer = new Player();
     currentGame = new Game(human, computer);
-    var humanWins = currentGame.humanPlayer.retrieveWinsFromStorage();
-    var compWins = currentGame.compPlayer.retrieveWinsFromStorage();
-    currentGame.humanPlayer.wins = humanWins;
-    currentGame.compPlayer.wins = compWins;
+    getLocalStorage();
     renderPlayerData();
 }
 
