@@ -212,7 +212,7 @@ function returnHome() {
   hide(difficultFighters);
   display(gameChoice);
   hide(changeGameButton);
-  //currentGame.resetGame();
+  currentGame.resetGame();
   renderPlayerData();
   // renderWins();
   renderHeaderText("Game");
