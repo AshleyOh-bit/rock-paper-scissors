@@ -45,10 +45,10 @@ Selecting a Fighter in Difficult Mode
 ![alt text]()
 
 Classic Game Play Timeout
-
+![alt text]()
 
 Difficult Game Play Timeout
-
+![alt text]()
 
 Win Displays Persisting After Page Load
 ![alt text]()
