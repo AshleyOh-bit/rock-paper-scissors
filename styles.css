@@ -55,8 +55,8 @@ main {
 section {
   align-items: center;
   background-color: rgba(198, 249, 249, .95);
-  border: rgb(255, 255, 255) solid 2px;
   border-radius: 30%;
+  border: rgb(255, 255, 255) solid 2px;
   display: flex;
   flex-direction: column;
   height: 70%;
@@ -128,15 +128,14 @@ button {
 }
 
 .difficult-fighters {
-  flex-wrap: wrap;
   flex-direction: row;
+  flex-wrap: wrap;
 }
 
 .card {
   background-color: rgba(255, 255, 255, .80);
   border-radius: 3%;
   border: white solid 2px;
-  flex-shrink: 1;
   height: 35%;
   margin: 4%;
   width: 75%;
