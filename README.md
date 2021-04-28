@@ -33,28 +33,39 @@ The user is greeted on page load with the rules to these two game modes in cards
 - Logged wins tally and persist across view changes and page loads
 
 Page load:
-![Rock Paper Scissors Page load](./)
+![RPS-pageload](https://user-images.githubusercontent.com/76665215/116326808-98700f80-a782-11eb-92ee-b8b601b21e87.png)
+
 
 Selecting a Game Type:
-![alt text]()
+Classic:
+![selecting-classic](https://user-images.githubusercontent.com/76665215/116326862-bb022880-a782-11eb-842a-abb8e86ee476.gif)
 
-Selecting a Fighter in Classic Mode
-![alt text]()
+Difficult:
+![selecting-difficult](https://user-images.githubusercontent.com/76665215/116326978-fbfa3d00-a782-11eb-92b5-e96e52503a8c.gif)
 
-Selecting a Fighter in Difficult Mode
-![alt text]()
+Selecting a Fighter in Classic Mode & Classic Game Play Timeout:
+![choose-fighter-classic](https://user-images.githubusercontent.com/76665215/116327567-4b8d3880-a784-11eb-88bd-7523716f4f2e.gif)
 
-Classic Game Play Timeout
-![alt text]()
 
-Difficult Game Play Timeout
-![alt text]()
+Selecting a Fighter in Difficult Mode & Difficult Game Play Timeout:
+![choose-fighter-difficult](https://user-images.githubusercontent.com/76665215/116327361-d91c5880-a783-11eb-9bd8-182db293bbcd.gif)
+
+
+Use of Change Game button in Classic:
+![Change-game-classic](https://user-images.githubusercontent.com/76665215/116327735-ac1c7580-a784-11eb-85b5-545f3a7abb11.gif)
+
+
+Use of Change Game button in Difficult:
+![change-game-difficult](https://user-images.githubusercontent.com/76665215/116327860-e6861280-a784-11eb-9208-8b8f72151b71.gif)
+
 
 Win Displays Persisting After Page Load
-![alt text]()
+![reload](https://user-images.githubusercontent.com/76665215/116328011-3cf35100-a785-11eb-9ad0-f724dd5f0216.gif)
+
 
 Wins logged will be remembered by localStorage upon leaving and revisiting!
-![alt text]()
+![google-visit](https://user-images.githubusercontent.com/76665215/116328122-8ba0eb00-a785-11eb-97d7-bf86bc4ea815.gif)
+
 
 
 ### Future Additions
